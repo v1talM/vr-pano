@@ -130,9 +130,10 @@ export default {
    .secondary.pointing.menu .menu {
      display: none;
    }
-   .ui.menu:not(.vertical) .item, .ui.menu:not(.vertical) .menu{
+   .ui.large.menu:not(.vertical) .item, .ui.menu:not(.vertical) .menu{
      display: none;
    }
+
    .secondary.pointing.menu .toc.item, .large.menu .toc.item {
      display: block !important;
    }

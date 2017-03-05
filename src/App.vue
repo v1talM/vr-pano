@@ -47,7 +47,7 @@ export default {
   .pushable>.pusher:after
     background-color: transparent !important
   .ui.large.menu
-    padding: 1rem
+    padding: .625rem
     border: none
   .ui.vertical.segment
     padding: 0

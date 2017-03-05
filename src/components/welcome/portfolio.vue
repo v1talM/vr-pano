@@ -246,6 +246,7 @@ export default {
 <style lang="sass">
   .ui.segment.portfolio
     background-color: #e1f5fe
+    border-bottom: none
   .ui.segment.portfolio .grid
     margin-top: 0
   .ui.segment.portfolio .card
