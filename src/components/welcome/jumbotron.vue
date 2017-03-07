@@ -5,11 +5,13 @@
         <a class="toc item">
           <i class="sidebar icon"></i>
         </a>
-        <a class="active item">Home</a>
+        <a class="active item">
+          <img class="ui mini image logo" :src="require('@/assets/logo.png')" alt="vr-pano">
+        </a>
         <div class="right menu">
-          <a class="item">Work</a>
-          <a class="item">Company</a>
-          <a class="item">Careers</a>
+          <a class="item">图片画廊</a>
+          <a class="item">VR看世界</a>
+          <a class="item">高校全景</a>
         </div>
         <div class="ui dropdown item account" tabindex="0">
           <button class="circular ui account icon button">
@@ -170,10 +172,13 @@ export default {
     background-color: #0097a7
   .ui.secondary.pointing.menu
     box-shadow: rgba(0, 0, 0, .2) 0px 2px 4px 0px
+  .ui.large.menu.fixed
+    padding: .5rem 0
   .ui.large.menu
     box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.16),0px 2px 5px 0px rgba(0,0,0,0.23)
-  .ui.secondary.inverted.menu .link.item, .ui.secondary.inverted.menu a.item, .ui.large.menu .item
+  .ui.secondary.inverted.menu .link.item, .ui.secondary.inverted.menu a.item, .ui.large.menu .item, .ui.secondary.pointing.menu .item
     color: #cfd8dc !important
+    align-self: center
   .ui.icon.button.account
     background-color: #e1f5fe
     color: #0097a7

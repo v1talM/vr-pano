@@ -12,6 +12,8 @@ export default {
   components: {
   },
   mounted () {
+    $(".ui.image.logo").attr('src',require('@/assets/logo.png'))
+    $(".ui.medium.image.brand ").attr('src', require('@/assets/brand.png'))
     $('.masthead.material')
         .visibility({
           once: false,
@@ -45,7 +47,7 @@ export default {
   body.pushable>.pusher
     background: #e1f5fe !important
   .pushable>.pusher:after
-    background-color: transparent !important
+    background-color: rgba(0, 0, 0, .4) !important
   .ui.large.menu
     padding: .625rem
     border: none
@@ -60,5 +62,24 @@ export default {
     z-index: 1002
   .ui.left.visible.sidebar, .ui.right.visible.sidebar
     box-shadow: 4px 0 8px rgba(0,0,0,.4) !important
-
+  .ui.vertical.vr-sidebar.sidebar.menu
+    background-color: #ffffff
+    border: 0
+  .ui.vertical.vr-sidebar.sidebar.menu .item
+    color: #546e7a
+  .ui.vertical.vr-sidebar.sidebar.menu .item:before
+    background: none
+  .ui.vertical.vr-sidebar.sidebar.menu a.item.brand
+    padding: 0
+  .ui.vertical.vr-sidebar.sidebar.menu.menu .item>i.icon
+    float: none
+    margin-right: .5rem
+  .ui.vertical.vr-sidebar.sidebar.menu .item:not(.brand)
+    margin: .125rem 0
+    line-height: 1.875rem
+    font-weight: 400
+  .ui.vertical.vr-sidebar.sidebar.menu .item:not(.brand):hover
+    color: #0097a7
+  .item.brand .content
+    background-color: #0097a7
 </style>
