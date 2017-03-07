@@ -72,13 +72,11 @@ export default {
   },
   mounted () {
       const vm = this
-      $(document).ready(function () {
-        $('.ui.segment.portfolio .container')
+      $('.ui.segment.portfolio .container')
           .visibility({
             once: false,
             observeChanges: true,
-            continuous: true,
-            onBottomVisible: function(calculations) {
+            onBottomVisible: function() {
               const page = vm.page + 1
               const size = vm.size
               portfolio.getVRList(page, size).then(res => {
@@ -89,19 +87,15 @@ export default {
                 }
                 vm.pushVRList(list).then( res => {
                     vm.setPage(page)
-                })
+               })
               })
             }
           })
-        ;
-      })
-
-
+      ;
   }
 
 }
 </script>
-
 <style lang="sass">
   .ui.segment.portfolio
     background-color: #e1f5fe
