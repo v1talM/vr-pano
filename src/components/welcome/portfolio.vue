@@ -4,7 +4,7 @@
       <div class="column" v-for="vr in vr_list">
         <div class="ui card vr-portfolio">
           <div class="image">
-            <img class="ui fluid image vr-thumb" :src="'http://vr.dev/' + vr.pro_thumb">
+            <img class="ui fluid image vr-thumb" :src="root + vr.pro_thumb">
           </div>
           <div class="extra content">
             <div class="ui author grid row">
@@ -29,221 +29,20 @@
           </div>
         </div>
       </div>
-      <!-- <div class="column">
-        <div class="ui card vr-portfolio">
-          <div class="image">
-            <img class="ui fluid image" src="./../../assets/img/green.png">
-          </div>
-          <div class="extra content">
-            <div class="ui author">
-              <img class="left floated ui large avatar" src="./../../assets/img/matt.jpg">
-              <div class="left floated left aligned">
-                <div class="header">
-                  <a href="#">Elliot Fu </a>
-                </div>
-                <div class="meta">
-                  Friends of <a href="#">Veronika</a>
-                 </div>
-              </div>
-              <div class="right floated">
-                <div class="ui heart rating" data-rating="1" data-max-rating="1" data-tooltip="100 favorites" data-position="left center"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div class="ui card vr-portfolio">
-          <div class="image">
-            <img class="ui fluid image" src="./../../assets/img/green.png">
-          </div>
-          <div class="extra content">
-            <div class="ui author">
-              <img class="left floated ui large avatar" src="./../../assets/img/matt.jpg">
-              <div class="left floated left aligned">
-                <div class="header">
-                  <a href="#">Elliot Fu </a>
-                </div>
-                <div class="meta">
-                  Friends of <a href="#">Veronika</a>
-                 </div>
-              </div>
-              <div class="right floated">
-                <div class="ui heart rating" data-rating="1" data-max-rating="1" data-tooltip="100 favorites" data-position="left center"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div class="ui card vr-portfolio">
-          <div class="image">
-            <img class="ui fluid image" src="./../../assets/img/green.png">
-          </div>
-          <div class="extra content">
-            <div class="ui author">
-              <img class="left floated ui large avatar" src="./../../assets/img/matt.jpg">
-              <div class="left floated left aligned">
-                <div class="header">
-                  <a href="#">Elliot Fu </a>
-                </div>
-                <div class="meta">
-                  Friends of <a href="#">Veronika</a>
-                 </div>
-              </div>
-              <div class="right floated">
-                <div class="ui heart rating" data-rating="1" data-max-rating="1" data-tooltip="100 favorites" data-position="left center"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div class="ui card vr-portfolio">
-          <div class="image">
-            <img class="ui fluid image" src="./../../assets/img/green.png">
-          </div>
-          <div class="extra content">
-            <div class="ui author">
-              <img class="left floated ui large avatar" src="./../../assets/img/matt.jpg">
-              <div class="left floated left aligned">
-                <div class="header">
-                  <a href="#">Elliot Fu </a>
-                </div>
-                <div class="meta">
-                  Friends of <a href="#">Veronika</a>
-                 </div>
-              </div>
-              <div class="right floated">
-                <div class="ui heart rating" data-rating="1" data-max-rating="1" data-tooltip="100 favorites" data-position="left center"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div class="ui card vr-portfolio">
-          <div class="image">
-            <img class="ui fluid image" src="./../../assets/img/green.png">
-          </div>
-          <div class="extra content">
-            <div class="ui author">
-              <img class="left floated ui large avatar" src="./../../assets/img/matt.jpg">
-              <div class="left floated left aligned">
-                <div class="header">
-                  <a href="#">Elliot Fu </a>
-                </div>
-                <div class="meta">
-                  Friends of <a href="#">Veronika</a>
-                 </div>
-              </div>
-              <div class="right floated">
-                <div class="ui heart rating" data-rating="1" data-max-rating="1" data-tooltip="100 favorites" data-position="left center"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div class="ui card vr-portfolio">
-          <div class="image">
-            <img class="ui fluid image" src="./../../assets/img/green.png">
-          </div>
-          <div class="extra content">
-            <div class="ui author">
-              <img class="left floated ui large avatar" src="./../../assets/img/matt.jpg">
-              <div class="left floated left aligned">
-                <div class="header">
-                  <a href="#">Elliot Fu </a>
-                </div>
-                <div class="meta">
-                  Friends of <a href="#">Veronika</a>
-                 </div>
-              </div>
-              <div class="right floated">
-                <div class="ui heart rating" data-rating="1" data-max-rating="1" data-tooltip="100 favorites" data-position="left center"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div class="ui card vr-portfolio">
-          <div class="image">
-            <img class="ui fluid image" src="./../../assets/img/green.png">
-          </div>
-          <div class="extra content">
-            <div class="ui author">
-              <img class="left floated ui large avatar" src="./../../assets/img/matt.jpg">
-              <div class="left floated left aligned">
-                <div class="header">
-                  <a href="#">Elliot Fu </a>
-                </div>
-                <div class="meta">
-                  Friends of <a href="#">Veronika</a>
-                 </div>
-              </div>
-              <div class="right floated">
-                <div class="ui heart rating" data-rating="1" data-max-rating="1" data-tooltip="100 favorites" data-position="left center"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div class="ui card vr-portfolio">
-          <div class="image">
-            <img class="ui fluid image" src="./../../assets/img/green.png">
-          </div>
-          <div class="extra content">
-            <div class="ui author">
-              <img class="left floated ui large avatar" src="./../../assets/img/matt.jpg">
-              <div class="left floated left aligned">
-                <div class="header">
-                  <a href="#">Elliot Fu </a>
-                </div>
-                <div class="meta">
-                  Friends of <a href="#">Veronika</a>
-                 </div>
-              </div>
-              <div class="right floated">
-                <div class="ui heart rating" data-rating="1" data-max-rating="1" data-tooltip="100 favorites" data-position="left center"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div class="ui card vr-portfolio">
-          <div class="image">
-            <img class="ui fluid image" src="./../../assets/img/green.png">
-          </div>
-          <div class="extra content">
-            <div class="ui author">
-              <img class="left floated ui large avatar" src="./../../assets/img/matt.jpg">
-              <div class="left floated left aligned">
-                <div class="header">
-                  <a href="#">Elliot Fu </a>
-                </div>
-                <div class="meta">
-                  Friends of <a href="#">Veronika</a>
-                 </div>
-              </div>
-              <div class="right floated">
-                <div class="ui heart rating" data-rating="1" data-max-rating="1" data-tooltip="100 favorites" data-position="left center"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
     </div>
   </div>
 </template>
 
 <script>
 import portfolio from '@/api/portfolio'
+import {url_root} from '@/env'
 import {mapState, mapActions} from 'vuex'
 export default {
+  data () {
+    return {
+      root: url_root
+    }
+  },
   methods: {
     ...mapActions([
       'setVRList',
