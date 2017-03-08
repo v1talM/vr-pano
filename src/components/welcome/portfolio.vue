@@ -48,14 +48,16 @@ export default {
       'setVRList',
       'getVRList',
       'pushVRList',
-      'setPage'
+      'setPage',
+      'setMaxPage'
     ])
   },
   computed: {
     ...mapState({
       page: state => state.portfolio.page,
       size: state => state.portfolio.size,
-      vr_list: state => state.portfolio.VR_List
+      vr_list: state => state.portfolio.VR_List,
+      is_max: state => state.portfolio.is_max
     })
   },
   created () {
@@ -79,16 +81,21 @@ export default {
             onBottomVisible: function() {
               const page = vm.page + 1
               const size = vm.size
-              portfolio.getVRList(page, size).then(res => {
-                const vr_list = res.data.data
-                const list = []
-                for (var i = 0; i < vr_list.length; i++) {
-                  list.push(vr_list[i])
-                }
-                vm.pushVRList(list).then( res => {
-                    vm.setPage(page)
-               })
-              })
+              if( !vm.is_max ){
+                portfolio.getVRList(page, size).then(res => {
+                    const vr_list = res.data.data
+                    if( vr_list.length < 1) {
+                      vm.setMaxPage()
+                    }
+                    const list = []
+                    for (var i = 0; i < vr_list.length; i++) {
+                      list.push(vr_list[i])
+                    }
+                    vm.pushVRList(list).then( res => {
+                        vm.setPage(page)
+                   })
+                 })
+               }
             }
           })
       ;
@@ -100,6 +107,7 @@ export default {
   .ui.segment.portfolio
     background-color: #e1f5fe
     border-bottom: none
+    padding-bottom: 2rem
   .ui.segment.portfolio .grid
     margin-top: 0
   .ui.segment.portfolio .card

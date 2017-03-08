@@ -1,7 +1,8 @@
 const state = {
   VR_List: [],
   page: 1,
-  size: 8
+  size: 8,
+  is_max: false
 }
 const getters = {
   vrLists: state => {
@@ -22,7 +23,10 @@ const mutations = {
     state.VR_List = list
   },
   PUSH_VR_LIST( state, list ) {
-      state.VR_List.extend(list)
+    state.VR_List.extend(list)
+  },
+  SET_MAX_PAGE( state ) {
+    state.is_max = true
   }
 }
 const actions = {
@@ -34,6 +38,9 @@ const actions = {
   },
   pushVRList({commit}, list) {
     commit('PUSH_VR_LIST', list)
+  },
+  setMaxPage({commit}) {
+    commit('SET_MAX_PAGE')
   }
 }
 

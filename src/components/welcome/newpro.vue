@@ -65,13 +65,13 @@ export default {
   @media screen and (min-width: 75rem)
     .ui.button.newpro
       position: fixed
-      right: 5rem
-      bottom: 3rem
+      right: 2rem
+      bottom: 1.5rem
   @media screen and (max-width: 75rem)
     .ui.button.newpro
       position: fixed
       right: 1.5rem
-      bottom: 1.5rem       
+      bottom: 1.5rem
   @media screen and (max-width: 44rem)
     .ui.button.newpro
       position: fixed

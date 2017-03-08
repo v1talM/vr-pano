@@ -1,34 +1,6 @@
 <template lang="html">
   <div class="ui vertical masthead center material aligned segment">
-    <div class="ui large secondary inverted pointing menu">
-      <div class="ui container">
-        <a class="toc item">
-          <i class="sidebar icon"></i>
-        </a>
-        <a class="active item">
-          <img class="ui mini image logo" :src="require('@/assets/logo.png')" alt="vr-pano">
-        </a>
-        <div class="right menu">
-          <a class="item">图片画廊</a>
-          <a class="item">VR看世界</a>
-          <a class="item">高校全景</a>
-        </div>
-        <div class="ui dropdown item account" tabindex="0">
-          <button class="circular ui account icon button">
-            <i class="icon user"></i>
-          </button>
-          <div class="menu" tabindex="-1">
-            <div class="item">Action</div>
-            <div class="item">Another Action</div>
-            <div class="item">Something else here</div>
-            <div class="divider"></div>
-            <div class="item">Separated Link</div>
-            <div class="divider"></div>
-            <div class="item">One more separated link</div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <navbar></navbar>
     <div class="ui container">
       <div class="ui stackable centered grid">
         <div class="ui row">
@@ -50,6 +22,7 @@
 </template>
 
 <script>
+import navbar from '@/components/header/navbar'
 export default {
   mounted () {
     $('.ui.dropdown')
@@ -66,6 +39,9 @@ export default {
       duration: 1200
     })
 
+  },
+  components: {
+    navbar
   }
 }
 </script>

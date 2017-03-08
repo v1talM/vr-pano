@@ -1,0 +1,343 @@
+<template lang="html">
+  <div class="login card">
+    <div class="field">
+      <h2 class="header">Login</h2>
+      <div class="form-group">
+        <input type="text" required="required" />
+        <label for="input" class="control-label">Name</label><i class="bar"></i>
+      </div>
+      <div class="form-group">
+        <input type="password" required="required" />
+        <label for="input" class="control-label">Password</label><i class="bar"></i>
+      </div>
+      <div class="button-container">
+        <button type="button" class="button"><span>Submit</span></button>
+      </div>
+    </div>
+    <div v-bind:class="classObj">
+      <i class="zmdi zmdi-account-add" v-show="! signup" @click="toggleSignUp()"></i>
+      <i class="zmdi zmdi-close" v-show="signup" @click="toggleSignUp()"></i>
+      <div class="field">
+        <span class="header">Register</span>
+        <div class="form-group">
+          <input type="text" required="required" />
+          <label for="input" class="control-label">Name</label><i class="bar"></i>
+        </div>
+        <div class="form-group">
+          <input type="password" required="required" />
+          <label for="input" class="control-label">Password</label><i class="bar"></i>
+        </div>
+        <div class="form-group">
+          <input type="password" required="required" />
+          <label for="input" class="control-label">Password again</label><i class="bar"></i>
+        </div>
+        <div class="button-container">
+          <button type="button" class="button"><span>Submit</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+      signup: false
+    }
+  },
+  computed: {
+    classObj () {
+      return {
+        'fab': ! this.signup,
+        'fab active': this.signup
+      }
+    }
+  },
+  methods: {
+    toggleSignUp () {
+      this.signup = !this.signup
+    }
+  },
+  mounted () {
+
+  }
+}
+</script>
+
+<style lang="css">
+@import url(http://zavoloklom.github.io/material-design-iconic-font/css/docs.md-iconic-font.min.css);
+
+.login.card {
+  height: 25rem;
+  width: 21.875rem;
+  background: #fff;
+  font-family: Roboto;
+  display: block;
+  position: relative;
+  margin: 3.125rem auto;
+  border-radius: .3125rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.2s ease-in-out;
+}
+
+.login.card:hover {
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+}
+
+.login.card .fab {
+  display: block;
+  position: absolute;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: #ffc400;
+  cursor: pointer;
+  top: -1.75rem;
+  right: -1.75rem;
+  z-index: 1000;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16), 0 2px 3px rgba(0, 0, 0, 0.23);
+  transition: all 0.4s ease-in-out;
+}
+
+.login.card .fab>i {
+  color: #fff;
+  line-height: 3.5rem;
+  font-size: 2em;
+  transition: all 0.4s ease-in-out;
+  margin-right:.85rem;
+  float:right;
+}
+
+.login.card .active {
+  top: 0;
+  right: 0;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  cursor:auto;
+}
+
+.login.card .active>i {
+  margin: 0 .9375rem;
+  transform: rotate(360deg);
+  cursor:pointer;
+}
+
+.login.card .fab>.field {
+  visibility:hidden;
+  opacity:0;
+  width: 0;
+  height:0;
+}
+
+.login.card .active>.field {
+  visibility:visible;
+  opacity:1;
+  width: 80%;
+  height:100%;
+  transition-delay: 0.2s;
+}
+
+.login.card .header {
+  display: block;
+  position: relative;
+  font-size: 3em;
+  color: #ffc400;
+}
+
+.login.card .fab .header {
+  color: #fff;
+}
+
+.login.card .field {
+  display: block;
+  width: 80%;
+  margin: 1.5625rem auto;
+  top: 3.125rem;
+  height: 18.75rem;
+  position: relative;
+}
+
+.login.card .form-group {
+  position: relative;
+  margin: 1.5625rem auto;
+  text-align: left;
+}
+
+.login.card .form-group input {
+  height: 1.5625rem;
+}
+
+.login.card .form-group .control-label {
+  position: absolute;
+  top: 0.25rem;
+  float: left;
+  pointer-events: none;
+  z-index: 1;
+  color: #9e9e9e;
+  font-size: 1rem;
+  font-weight: normal;
+  -webkit-transition: all 0.28s ease;
+  transition: all 0.28s ease;
+}
+
+.login.card .fab .control-label{
+  color:#fff;
+}
+
+.login.card .form-group .bar {
+  position: relative;
+  border-bottom: 0.0625rem solid #9e9e9e;
+  display: block;
+}
+
+.login.card .fab .form-group .bar{
+  border-bottom: 0.0625rem solid #fff;
+}
+
+.login.card .form-group .bar::before {
+  content: '';
+  height: 0.125rem;
+  width: 0;
+  left: 50%;
+  bottom: -0.0625rem;
+  position: absolute;
+  background: #ffc400;
+  -webkit-transition: left 0.28s ease, width 0.28s ease;
+  transition: left 0.28s ease, width 0.28s ease;
+  z-index: 2;
+}
+
+.login.card .fab .form-group .bar::before {
+  background: #fff;
+}
+
+.login.card .form-group input {
+  display: block;
+  background: none;
+  padding: 0.125rem 0.125rem 0.0625rem;
+  font-size: 1rem;
+  border-width: 0;
+  border-color: transparent;
+  line-height: 1.9;
+  width: 100%;
+  color: transparent;
+  -webkit-transition: all 0.28s ease;
+  transition: all 0.28s ease;
+  box-shadow: none;
+}
+
+.login.card .form-group input[type="file"] {
+  line-height: 1;
+}
+
+.login.card .form-group input[type="file"] ~ .bar {
+  display: none;
+}
+
+.login.card .form-group input:focus,
+.login.card .form-group input:valid,
+.login.card .form-group input.form-file,
+.login.card .form-group input.has-value {
+  color: #333;
+}
+
+.login.card .form-group input:focus ~ .control-label,
+.login.card .form-group input:valid ~ .control-label,
+.login.card .form-group input.form-file ~ .control-label,
+.login.card .form-group input.has-value ~ .control-label {
+  font-size: 0.8rem;
+  color: gray;
+  top: -1rem;
+  left: 0;
+}
+
+.login.card .form-group input:focus {
+  outline: none;
+}
+
+.login.card .form-group input:focus ~ .control-label {
+  color: #ffc400;
+}
+
+.login.card .fab .form-group input:focus ~ .control-label {
+  color: #fff;
+}
+
+.login.card .form-group input:focus ~ .bar::before {
+  width: 100%;
+  left: 0;
+}
+
+.login.card .button {
+  position: relative;
+  background: #ffc400;
+  border: 1px solid #ffc400;
+  font-size: 1.1rem;
+  color: #4f93ce;
+  margin: 3rem 0;
+  padding: 0.75rem 3rem;
+  cursor: pointer;
+  -webkit-transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;
+  transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;
+  overflow: hidden;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.login.card .fab .button {
+  background: #fff;
+  border: 1px solid #ffc400;
+  color: #ffc400;
+}
+
+.login.card .button span {
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.login.card .fab .button span {
+  color: #ffc400;
+}
+
+.login.card .button::before {
+  content: '';
+  position: absolute;
+  background: #071017;
+  border: 50vh solid #1d4567;
+  width: 30vh;
+  height: 30vh;
+  border-radius: 50%;
+  display: block;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  opacity: 1;
+  -webkit-transform: translate(-50%, -50%) scale(0);
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.login.card .button:hover {
+  color: #337ab7;
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 9px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
+}
+
+.login.card .button:focus {
+  outline: none;
+}
+
+@media screen and (max-width: 24rem){
+  .login.card{
+    width: 18.5rem;
+    margin: 2.525rem auto;
+  }
+}
+
+@media screen and (max-width: 20rem){
+  .login.card{
+    width: 16.5rem;
+    margin: 2.125rem auto;
+  }
+}
+</style>
