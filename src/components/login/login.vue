@@ -15,8 +15,7 @@
       </div>
     </div>
     <div v-bind:class="classObj">
-      <i class="zmdi zmdi-account-add" v-show="! signup" @click="toggleSignUp()"></i>
-      <i class="zmdi zmdi-close" v-show="signup" @click="toggleSignUp()"></i>
+      <i class="mini icon" v-bind:class="{'add user': !signup, 'remove': signup}" @click="toggleSignUp()"></i>
       <div class="field">
         <span class="header">Register</span>
         <div class="form-group">
@@ -55,7 +54,7 @@ export default {
     }
   },
   methods: {
-    toggleSignUp () {
+    toggleSignUp (e) {
       this.signup = !this.signup
     }
   },
@@ -103,9 +102,11 @@ export default {
 .login.card .fab>i {
   color: #fff;
   line-height: 3.5rem;
-  font-size: 2em;
+  font-size: 1.5em;
   transition: all 0.4s ease-in-out;
-  margin-right:.85rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-right: 0;
   float:right;
 }
 
