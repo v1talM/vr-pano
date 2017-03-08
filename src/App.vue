@@ -1,5 +1,7 @@
 <template>
   <div id="app" class="pusher">
+    <navbar></navbar>
+    <sidebar></sidebar>
     <router-view></router-view>
   </div>
 </template>
@@ -7,9 +9,12 @@
 <script>
 import semantic from 'semantic'
 import '../node_modules/semantic-ui-css/semantic.min.css'
+import navbar from '@/components/welcome/navbar'
+import sidebar from '@/components/welcome/sidebar'
 export default {
   name: 'app',
   components: {
+    navbar, sidebar
   },
   mounted () {
     $(".ui.image.logo").attr('src',require('@/assets/logo.png'))
@@ -19,9 +24,11 @@ export default {
           once: false,
           onBottomPassed: function() {
             $('.ui.large.fixed.menu').transition('fade in');
+            
           },
           onBottomPassedReverse: function() {
             $('.ui.large.fixed.menu').transition('fade out');
+
           }
         })
       ;
