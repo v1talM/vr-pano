@@ -9,6 +9,7 @@
 <script>
 import semantic from 'semantic'
 import '../node_modules/semantic-ui-css/semantic.min.css'
+import '../node_modules/sweetalert2/dist/sweetalert2.css';
 import navbar from '@/components/welcome/navbar'
 import sidebar from '@/components/welcome/sidebar'
 export default {
@@ -24,7 +25,7 @@ export default {
           once: false,
           onBottomPassed: function() {
             $('.ui.large.fixed.menu').transition('fade in');
-            
+
           },
           onBottomPassedReverse: function() {
             $('.ui.large.fixed.menu').transition('fade out');
