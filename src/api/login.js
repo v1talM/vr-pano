@@ -17,5 +17,10 @@ export default {
             scope: ''
         }
     return Vue.axios.post(url_root + '/oauth/token', postData)
+  },
+  getUserData(header) {
+    return Vue.axios.get(api_root + 'user', {
+      headers: header
+    })
   }
 }

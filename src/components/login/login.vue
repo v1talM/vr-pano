@@ -49,6 +49,8 @@
 <script>
 import login from '@/api/login'
 import swal from 'sweetalert2'
+import {getHeader} from '@/helper'
+import {mapState, mapActions} from 'vuex'
 export default {
   data () {
     return {
@@ -66,6 +68,9 @@ export default {
     }
   },
   computed: {
+    ...mapState({
+      authUser: state => state.auth.authUser
+    }),
     classObj () {
       return {
         'fab': ! this.signup,
@@ -74,6 +79,10 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'loginUser',
+      'getUserData'
+    ]),
     toggleSignUp (e) {
       this.signup = !this.signup
     },
@@ -117,8 +126,40 @@ export default {
         email: this.login.email,
         password: this.login.password
       }
-      login.getAccessToken(user).then(res => {
-        console.log(res)
+      this.loginUser(user).then(res => {
+        const authUser = {}
+        if (res.status === 200) {
+          authUser.access_token = res.data.access_token
+          authUser.refresh_token = res.data.refresh_token
+          window.localStorage.setItem('authUser', JSON.stringify(authUser))
+          const header = getHeader()
+          this.getUserData(header).then(res => {
+            authUser.email = res.data.email
+            authUser.name = res.data.name
+            authUser.id = res.data.id
+            window.localStorage.setItem('authUser', JSON.stringify(authUser))
+            this.$store.dispatch('setAuthUser', authUser).then(res => {
+              this.$router.push({name: 'welcome'})
+              swal({
+                title: '登录成功!',
+                text: '欢迎回来! '+ authUser.name,
+                type: 'success'
+              })
+            })
+          }).catch(error => {
+            swal({
+              title: 'Error!',
+              text: '获取用户信息失败,请联系管理员',
+              type: 'error'
+            })
+          })
+        }
+      }).catch(error => {
+        swal({
+          title: 'Error!',
+          text: '登录失败,请检查用户名和密码',
+          type: 'error'
+        })
       })
     },
     clearRegistForm () {
