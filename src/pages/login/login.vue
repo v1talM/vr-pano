@@ -12,6 +12,11 @@ import login from '@/components/login/login'
 export default {
   components: {
     navbar, login
+  },
+  mounted () {
+    $('.ui.sidebar')
+      .sidebar('attach events', '.toc.item')
+    ;
   }
 }
 </script>

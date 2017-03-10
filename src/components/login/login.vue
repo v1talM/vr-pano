@@ -12,7 +12,7 @@
           <label for="input" class="control-label">登录密码</label><i class="bar"></i>
         </div>
         <div class="button-container">
-          <button type="button" class="button"><span>登 录</span></button>
+          <button type="submit" class="button"><span>登 录</span></button>
         </div>
       </form>
     </div>
@@ -61,8 +61,7 @@ export default {
       },
       login: {
         email: '',
-        password: '',
-        password_confirm: ''
+        password: ''
       }
     }
   },
@@ -114,7 +113,13 @@ export default {
       })
     },
     handleLogin () {
-
+      const user = {
+        email: this.login.email,
+        password: this.login.password
+      }
+      login.getAccessToken(user).then(res => {
+        console.log(res)
+      })
     },
     clearRegistForm () {
       this.regist.name = ''
