@@ -2,6 +2,7 @@
   <div id="app" class="pusher">
     <navbar></navbar>
     <sidebar></sidebar>
+    <userbar></userbar>
     <router-view></router-view>
   </div>
 </template>
@@ -12,10 +13,11 @@ import '../node_modules/semantic-ui-css/semantic.min.css'
 import '../node_modules/sweetalert2/dist/sweetalert2.css';
 import navbar from '@/components/welcome/navbar'
 import sidebar from '@/components/welcome/sidebar'
+import userbar from '@/components/header/sidebar'
 export default {
   name: 'app',
   components: {
-    navbar, sidebar
+    navbar, sidebar, userbar
   },
   mounted () {
     $(".ui.image.logo").attr('src',require('@/assets/logo.png'))
@@ -34,7 +36,7 @@ export default {
         })
       ;
       // create sidebar and attach to menu open
-      $('.ui.sidebar')
+      $('.ui.vr-sidebar.sidebar')
         .sidebar('attach events', '.toc.item')
       ;
   }
@@ -52,12 +54,13 @@ export default {
     font-size: 16px !important
   body
     background-color: #e1f5fe
+    color: #546e7a
   body.pushable>.pusher
     background: #e1f5fe !important
   .pushable>.pusher:after
     background-color: rgba(0, 0, 0, .4) !important
   .ui.large.menu
-    padding: .625rem
+    padding: .625rem 0
     border: none
   .ui.vertical.segment
     padding: 0
@@ -66,11 +69,11 @@ export default {
   .ui.large.menu a.item:hover, .ui.large.menu .dropdown.item:hover
     background: none
     color: #ffffff !important
-  .ui.left.overlay.sidebar
+  .ui.left.overlay.sidebar, .ui.right.overlay.sidebar
     z-index: 1002
   .ui.left.visible.sidebar, .ui.right.visible.sidebar
     box-shadow: 4px 0 8px rgba(0,0,0,.4) !important
-  .ui.vertical.vr-sidebar.sidebar.menu
+  .ui.vertical.vr-sidebar.sidebar.menu, .ui.vertical.user.sidebar.menu
     background-color: #ffffff
     border: 0
   .ui.vertical.vr-sidebar.sidebar.menu .item

@@ -18,6 +18,11 @@ import loader from '@/components/welcome/loader'
 export default {
   components: {
     jumbotron, newpro, portfolio, category, loader
+  },
+  mounted () {
+    $('.ui.vr-sidebar.sidebar')
+      .sidebar('attach events', '.toc.item')
+    ;
   }
 }
 </script>

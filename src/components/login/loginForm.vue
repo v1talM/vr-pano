@@ -1,20 +1,24 @@
 <template lang="html">
-  <div class="login card">
-    <div class="field">
-      <h2 class="header">登 录</h2>
-      <form v-on:submit.prevent="handleLogin()">
-        <div class="form-group">
-          <input type="email" v-model="login.email" required="required" />
-          <label for="input" class="control-label">登录邮箱</label><i class="bar"></i>
-        </div>
-        <div class="form-group">
-          <input type="password" v-model="login.password" required="required" />
-          <label for="input" class="control-label">登录密码</label><i class="bar"></i>
-        </div>
-        <div class="button-container">
-          <button type="submit" class="button"><span>登 录</span></button>
-        </div>
-      </form>
+  <div class="login content">
+    <div class="login card">
+      <img class="ui small image centered" :src="require('@/assets/brand.png')" alt="">
+      <div class="field">
+        <h2 class="header">登 录</h2>
+        <form v-on:submit.prevent="handleLogin()">
+          <div class="form-group">
+            <input type="email" v-model="login.email" required="required" />
+            <label for="input" class="control-label">登录邮箱</label><i class="bar"></i>
+          </div>
+          <div class="form-group">
+            <input type="password" v-model="login.password" required="required" />
+            <label for="input" class="control-label">登录密码</label><i class="bar"></i>
+          </div>
+          <div class="button-container">
+            <button type="submit" class="button"><span>登 录</span></button>
+          </div>
+        </form>
+      </div>
+
     </div>
     <div v-bind:class="classObj">
       <i class="mini icon" v-bind:class="{'add user': !signup, 'remove': signup}" @click="toggleSignUp()"></i>
@@ -168,34 +172,32 @@ export default {
       this.regist.password = ''
       this.regist.password_confirm = ''
     }
-  },
-  mounted () {
-
   }
 }
 </script>
 
 <style lang="css">
-@import url(http://zavoloklom.github.io/material-design-iconic-font/css/docs.md-iconic-font.min.css);
-
 .login.card {
-  height: 29rem;
-  width: 26.875rem;
-  background: #fff;
+  width: 100%;
+  background:transparent;
+  height: 100%;
   font-family: Roboto;
   display: block;
   position: relative;
-  margin: 3.125rem auto;
+  margin: 0 auto;
+  padding: 1rem 0;
   border-radius: .3125rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.2s ease-in-out;
+  transform: skew(0, -20deg);
+  overflow: hidden;
 }
-
-.login.card:hover {
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+.login.content .form-group input:focus ~ .control-label, .login.content .form-group input:valid ~ .control-label, .login.content .form-group input.form-file ~ .control-label, .login.content .form-group input.has-value ~ .control-label{
+  color: #ffffff !important;
 }
-
-.login.card .fab {
+.login.content .form-group input:focus, .login.content .form-group input:valid, .login.content .form-group input.form-file, .login.content .form-group input.has-value{
+  color: #ffffff !important;
+}
+.login.content .fab {
   display: block;
   position: absolute;
   width: 3.5rem;
@@ -203,14 +205,16 @@ export default {
   border-radius: 50%;
   background: #ffc400;
   cursor: pointer;
-  top: -1.75rem;
-  right: -1.75rem;
+  bottom: -1.75rem;
+  right: 1.75rem;
   z-index: 1000;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16), 0 2px 3px rgba(0, 0, 0, 0.23);
-  transition: all 0.4s ease-in-out;
+  transition: all 0.6s ease-in-out;
+  transform: skew(0, -20deg);
+  margin-top: 5.125rem;
 }
 
-.login.card .fab>i {
+.login.content .fab>i {
   color: #fff;
   line-height: 3.5rem;
   font-size: 1.5em;
@@ -221,48 +225,50 @@ export default {
   float:right;
 }
 
-.login.card .active {
+.login.content .active {
   top: 0;
   right: 0;
-  border-radius: 5px;
+  border-radius: 0;
   width: 100%;
   height: 100%;
   cursor:auto;
 }
 
-.login.card .active>i {
+.login.content .active>i {
   margin: 0 .9375rem;
   transform: rotate(360deg);
   cursor:pointer;
 }
 
-.login.card .fab>.field {
+.login.content .fab>.field {
   visibility:hidden;
   opacity:0;
   width: 0;
   height:0;
+  display:none;
 }
 
-.login.card .active>.field {
+.login.content .active>.field {
   visibility:visible;
   opacity:1;
   width: 80%;
   height:100%;
   transition-delay: 0.2s;
+  display: block;
 }
 
-.login.card .header {
+.login.content .header {
   display: block;
   position: relative;
-  font-size: 3em;
-  color: #ffc400;
+  font-size: 2.5em;
+  color: #ffffff;
 }
 
-.login.card .fab .header {
+.login.content .fab .header {
   color: #fff;
 }
 
-.login.card .field {
+.login.content .field {
   display: block;
   width: 80%;
   margin: .5625rem auto;
@@ -271,44 +277,44 @@ export default {
   position: relative;
 }
 
-.login.card .form-group {
+.login.content .form-group {
   position: relative;
   margin: 1.5625rem auto;
   text-align: left;
 }
 
-.login.card .form-group input {
+.login.content .form-group input {
   height: 2.5625rem;
 }
 
-.login.card .form-group .control-label {
+.login.content .form-group .control-label {
   position: absolute;
   top: 0.25rem;
   float: left;
   pointer-events: none;
   z-index: 1;
-  color: #9e9e9e;
+  color: #ffffff;
   font-size: 1rem;
   font-weight: normal;
   -webkit-transition: all 0.28s ease;
   transition: all 0.28s ease;
 }
 
-.login.card .fab .control-label{
+.login.content .fab .control-label{
   color:#fff;
 }
 
-.login.card .form-group .bar {
+.login.content .form-group .bar {
   position: relative;
-  border-bottom: 0.0625rem solid #9e9e9e;
+  border-bottom: 0.0625rem solid #ffffff;
   display: block;
 }
 
-.login.card .fab .form-group .bar{
+.login.content .fab .form-group .bar{
   border-bottom: 0.0625rem solid #fff;
 }
 
-.login.card .form-group .bar::before {
+.login.content .form-group .bar::before {
   content: '';
   height: 0.125rem;
   width: 0;
@@ -321,11 +327,11 @@ export default {
   z-index: 2;
 }
 
-.login.card .fab .form-group .bar::before {
+.login.content .fab .form-group .bar::before {
   background: #fff;
 }
 
-.login.card .form-group input {
+.login.content .form-group input {
   display: block;
   background: none;
   padding: 0.125rem 0.125rem 0.0625rem;
@@ -340,52 +346,54 @@ export default {
   box-shadow: none;
 }
 
-.login.card .form-group input[type="file"] {
+.login.content .form-group input[type="file"] {
   line-height: 1;
 }
 
-.login.card .form-group input[type="file"] ~ .bar {
+.login.content .form-group input[type="file"] ~ .bar {
   display: none;
 }
 
-.login.card .form-group input:focus,
-.login.card .form-group input:valid,
-.login.card .form-group input.form-file,
-.login.card .form-group input.has-value {
+.login.content .form-group input:focus,
+.login.content .form-group input:valid,
+.login.content .form-group input.form-file,
+.login.content .form-group input.has-value {
   color: #333;
 }
 
-.login.card .form-group input:focus ~ .control-label,
-.login.card .form-group input:valid ~ .control-label,
-.login.card .form-group input.form-file ~ .control-label,
-.login.card .form-group input.has-value ~ .control-label {
+.login.content .form-group input:focus ~ .control-label,
+.login.content .form-group input:valid ~ .control-label,
+.login.content .form-group input.form-file ~ .control-label,
+.login.content .form-group input.has-value ~ .control-label {
   font-size: 0.8rem;
   color: gray;
   top: -1rem;
   left: 0;
 }
 
-.login.card .form-group input:focus {
+.login.content .form-group input:focus {
   outline: none;
 }
 
-.login.card .form-group input:focus ~ .control-label {
+.login.content .form-group input:focus ~ .control-label {
   color: #ffc400;
 }
 
-.login.card .fab .form-group input:focus ~ .control-label {
+.login.content .fab .form-group input:focus ~ .control-label {
   color: #fff;
 }
 
-.login.card .form-group input:focus ~ .bar::before {
+.login.content .form-group input:focus ~ .bar::before {
   width: 100%;
   left: 0;
 }
-
-.login.card .button {
+.login.content .button-container{
+  text-align: center;
+}
+.login.content .button {
   position: relative;
-  background: #ffc400;
-  border: 1px solid #ffc400;
+  background: transparent;
+  border: 1px solid #ffffff;
   font-size: 1.1rem;
   color: #4f93ce;
   margin: 1rem 0;
@@ -394,26 +402,25 @@ export default {
   -webkit-transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;
   transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;
   overflow: hidden;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
-.login.card .fab .button {
+.login.content .fab .button {
   background: #fff;
   border: 1px solid #ffc400;
   color: #ffc400;
 }
 
-.login.card .button span {
+.login.content .button span {
   color: #fff;
   position: relative;
   z-index: 1;
 }
 
-.login.card .fab .button span {
+.login.content .fab .button span {
   color: #ffc400;
 }
 
-.login.card .button::before {
+.login.content .button::before {
   content: '';
   position: absolute;
   background: #071017;
@@ -430,31 +437,44 @@ export default {
   transform: translate(-50%, -50%) scale(0);
 }
 
-.login.card .button:hover {
+.login.content .button:hover {
   color: #337ab7;
-  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 9px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
+  background-color: #ffc400;
+  border-color: #ffc400;
 }
-
-.login.card .button:focus {
+.login.content .fab .button:hover{
+  color: #ffc400;
+  background-color: #ffffff;
+}
+.login.content .button:focus {
   outline: none;
 }
 @media screen and (max-width: 26rem){
-  .login.card{
-    width: 22.5rem;
-    margin: 2.525rem auto;
+  .ui.big.vertical.menu{
+    width: 20rem;
+  }
+  .login.content{
+    width: 100%;
+    margin: 0 auto;
   }
 }
 @media screen and (max-width: 24rem){
-  .login.card{
-    width: 18.5rem;
-    margin: 2.525rem auto;
+  .ui.big.vertical.menu{
+    width: 20rem;
+  }
+  .login.content{
+    width: 100%;
+    margin: 0 auto;
   }
 }
 
 @media screen and (max-width: 20rem){
-  .login.card{
-    width: 16.5rem;
-    margin: 2.125rem auto;
+  .ui.big.vertical.menu{
+    width: 16rem;
+  }
+  .login.content{
+    width: 100%;
+    margin: 0 auto;
   }
 }
 </style>

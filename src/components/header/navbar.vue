@@ -12,15 +12,10 @@
         <a class="item">VR看世界</a>
         <a class="item">高校全景</a>
       </div>
-      <div class="ui dropdown item account" tabindex="0">
+      <div class="ui item account" tabindex="0">
         <button class="circular ui account icon button">
           <i class="icon user"></i>
         </button>
-        <div class="menu" tabindex="-1">
-          <router-link :to="{ name: 'login' }" class="item">登录</router-link>
-          <div class="divider"></div>
-          <div class="item">One more separated link</div>
-        </div>
       </div>
     </div>
   </div>
@@ -29,8 +24,8 @@
 <script>
 export default {
   mounted () {
-    $('.ui.dropdown')
-      .dropdown()
+    $('.ui.user.sidebar')
+      .sidebar('attach events', '.account.button')
     ;
   }
 }
