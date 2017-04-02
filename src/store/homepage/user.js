@@ -4,8 +4,11 @@ const state = {
 }
 
 const mutations = {
-  SET_AUT_USER (state, authUser) {
+  SET_AUTH_USER (state, authUser) {
     state.authUser = authUser
+  },
+  CLEAR_AUTH_USER (state) {
+    state.authUser = null
   }
 }
 
@@ -17,7 +20,10 @@ const actions = {
     return login.getUserData(header)
   },
   setAuthUser({commit}, user) {
-    commit('SET_AUT_USER', user)
+    commit('SET_AUTH_USER', user)
+  },
+  logoutUser({commit}){
+    commit('CLEAR_AUTH_USER')
   }
 }
 

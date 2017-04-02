@@ -4,20 +4,26 @@
       <div class="column" v-for="vr in vr_list">
         <div class="ui card vr-portfolio">
           <div class="image">
-            <img class="ui fluid image vr-thumb" :src="root + vr.pro_thumb">
+            <router-link :to="{name: 'vr', params: {id: vr.id}}">
+              <img class="ui fluid image vr-thumb" :src="root + vr.pro_thumb" :alt="vr.pro_title" :title="vr.pro_title">
+            </router-link>
           </div>
           <div class="extra content">
             <div class="ui author grid row">
               <div class="four wide column">
-                <img class="ui large avatar" src="./../../assets/img/matt.jpg">
+                <router-link :to="{name: 'user', params: {id: vr.user.id}}">
+                  <img class="ui large avatar" src="./../../assets/img/matt.jpg" :alt="vr.user.name" :title="vr.user.name">
+                </router-link>
               </div>
               <div class="ten wide column">
                 <div class="left aligned">
                   <div class="header">
-                    <a href="#" v-bind:title="vr.pro_title">{{ vr.pro_title }} </a>
+                    <router-link :to="{name: 'vr', params: {id: vr.id}}">
+                      {{ vr.pro_title }}
+                    </router-link>
                   </div>
                   <div class="meta">
-                    Friends of <a href="#">Veronika</a>
+                    Friends of <router-link :to="{name: 'user', params: {id: vr.user.id}}">{{ vr.user.name}}</router-link>
                    </div>
                 </div>
               </div>

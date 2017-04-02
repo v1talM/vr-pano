@@ -138,12 +138,13 @@ export default {
           window.localStorage.setItem('authUser', JSON.stringify(authUser))
           const header = getHeader()
           this.getUserData(header).then(res => {
-            authUser.email = res.data.email
-            authUser.name = res.data.name
-            authUser.id = res.data.id
+            authUser.email = res.data.email//用户邮箱
+            authUser.name = res.data.name//用户名称
+            authUser.id = res.data.id//用户id
+            authUser.productsCount = res.data.products.length//用户作品统计
+            authUser.avatar = res.data.avatar//用户头像
             window.localStorage.setItem('authUser', JSON.stringify(authUser))
             this.$store.dispatch('setAuthUser', authUser).then(res => {
-              this.$router.push({name: 'welcome'})
               swal({
                 title: '登录成功!',
                 text: '欢迎回来! '+ authUser.name,
