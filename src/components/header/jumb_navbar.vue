@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="ui large secondary inverted pointing menu">
+  <div class="ui large secondary fixed inverted pointing menu">
     <div class="ui container">
       <a class="toc item" >
         <i class="sidebar icon"></i>

@@ -9,12 +9,6 @@ const getters = {
     return state.VR_List
   }
 }
-//扩展辅助方法，方便vr_list数组push项目
-Array.prototype.extend = function (array) {
-   array.forEach(function (item) {
-     this.push(item)
-   }, this)
-}
 const mutations = {
   SET_PAGE ( state, page ) {
     state.page = page
@@ -23,7 +17,9 @@ const mutations = {
     state.VR_List = list
   },
   PUSH_VR_LIST( state, list ) {
-    state.VR_List.extend(list)
+    list.forEach(function (item) {
+      state.VR_List.push(item)
+    })
   },
   SET_MAX_PAGE( state ) {
     state.is_max = true

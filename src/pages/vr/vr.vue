@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import navbar from '@/components/header/navbar'
+import navbar from '@/components/header/vr_navbar'
 import vr from '@/components/vr/vr'
 export default {
   components: {

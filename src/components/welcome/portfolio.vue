@@ -63,20 +63,23 @@ export default {
       page: state => state.portfolio.page,
       size: state => state.portfolio.size,
       vr_list: state => state.portfolio.VR_List,
-      is_max: state => state.portfolio.is_max
+      is_max: state => state.portfolio.is_max,
     })
   },
   created () {
-    const page = this.$store.state.portfolio.page
-    const size = this.$store.state.portfolio.size
-    portfolio.getVRList(page, size).then( res => {
-      const vr_list = res.data.data
-      const list = []
-      for (var i = 0; i < vr_list.length; i++) {
-        list.push(vr_list[i])
-      }
-      this.setVRList(list)
-    })
+    if(!this.is_max){
+      const page = this.$store.state.portfolio.page
+      const size = this.$store.state.portfolio.size
+      portfolio.getVRList(page, size).then( res => {
+        const vr_list = res.data.data
+        const list = []
+        for (var i = 0; i < vr_list.length; i++) {
+          list.push(vr_list[i])
+        }
+        this.pushVRList(list)
+        this.setPage(page + 1)
+      })
+    }
   },
   mounted () {
       const vm = this
@@ -85,7 +88,7 @@ export default {
             once: false,
             observeChanges: true,
             onBottomVisible: function() {
-              const page = vm.page + 1
+              const page = vm.page
               const size = vm.size
               if( !vm.is_max ){
                 portfolio.getVRList(page, size).then(res => {
@@ -98,7 +101,8 @@ export default {
                       list.push(vr_list[i])
                     }
                     vm.pushVRList(list).then( res => {
-                        vm.setPage(page)
+                      if(!vm.is_max)
+                        vm.setPage(page + 1)
                    })
                  })
                }

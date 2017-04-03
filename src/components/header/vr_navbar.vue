@@ -1,7 +1,7 @@
 <template lang="html">
-  <div class="ui large top fixed hidden transition menu appbar">
+  <div class="ui large secondary inverted fixed pointing menu vrbar">
     <div class="ui container">
-      <a class="toc item">
+      <a class="toc item" >
         <i class="sidebar icon"></i>
       </a>
       <router-link class="active item" :to="{name: 'welcome'}">
@@ -23,8 +23,19 @@
 
 <script>
 export default {
+  mounted () {
+    $('.ui.user.sidebar')
+      .sidebar('attach events', '.account.button')
+    ;
+  }
 }
 </script>
 
-<style lang="css">
+<style lang="sass">
+  .ui.secondary.pointing.menu.large.menu.vrbar
+    background-color: transparent
+  .ui.secondary.pointing.menu.large.menu.vrbar a.item
+    color: #ffffff !important
+  .ui.secondary.pointing.menu.large.menu.vrbar a.item:hover
+    color: #0097a7 !important
 </style>

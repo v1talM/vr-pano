@@ -4,7 +4,7 @@
     <div class="ui container">
       <div class="ui stackable centered grid">
         <div class="ui row">
-          <div class="ten wide column center aligned">
+          <div class="ten wide column center aligned" style="margin-top: 4.5625rem">
               <h1 class="ui inverted  header vr-slogan transition hidden">
                 <p>It's a big world</p>
                 <p>Exploring it just go easier</p>
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import navbar from '@/components/header/navbar'
+import navbar from '@/components/header/jumb_navbar'
 export default {
   mounted () {
     $('.ui.dropdown')

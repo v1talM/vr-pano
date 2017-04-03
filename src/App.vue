@@ -1,6 +1,5 @@
 <template>
   <div id="app" class="pusher">
-    <navbar></navbar>
     <sidebar></sidebar>
     <userbar></userbar>
     <router-view></router-view>
@@ -11,13 +10,12 @@
 import semantic from 'semantic'
 import '../node_modules/semantic-ui-css/semantic.min.css'
 import '../node_modules/sweetalert2/dist/sweetalert2.css';
-import navbar from '@/components/welcome/navbar'
 import sidebar from '@/components/welcome/sidebar'
 import userbar from '@/components/header/sidebar'
 export default {
   name: 'app',
   components: {
-    navbar, sidebar, userbar
+    sidebar, userbar
   },
   mounted () {
     $(".ui.image.logo").attr('src',require('@/assets/logo.png'))
@@ -26,11 +24,11 @@ export default {
         .visibility({
           once: false,
           onBottomPassed: function() {
-            $('.ui.large.fixed.menu').transition('fade in');
-
+            $('.ui.large.fixed.menu.appbar').transition('fade in');
+            console.log(1111)
           },
           onBottomPassedReverse: function() {
-            $('.ui.large.fixed.menu').transition('fade out');
+            $('.ui.large.fixed.menu.appbar').transition('fade out');
 
           }
         })
