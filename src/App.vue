@@ -25,18 +25,14 @@ export default {
           once: false,
           onBottomPassed: function() {
             $('.ui.large.fixed.menu.appbar').transition('fade in');
-            console.log(1111)
           },
           onBottomPassedReverse: function() {
             $('.ui.large.fixed.menu.appbar').transition('fade out');
-
           }
         })
       ;
       // create sidebar and attach to menu open
-      $('.ui.vr-sidebar.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
+      
   }
 }
 </script>

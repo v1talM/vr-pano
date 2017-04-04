@@ -26,6 +26,7 @@ export default {
     }
   },
   mounted () {
+    this.$store.dispatch('setPreload')
     const vrid = this.$route.params.id
     api.getVRById(vrid).then( res => {
       this.vr = res.data.data
@@ -49,9 +50,12 @@ export default {
       this.geometry.scale( - 1, 1, 1 );
       var vr_photo = url_root + this.vr.pro_photo
       //this.vr_photo.src = require('@/assets/img/photo_88764.jpg')
+      var vm = this
       this.material = new THREE.MeshBasicMaterial( {
-          map: new THREE.TextureLoader().setCrossOrigin(url_root).load( vr_photo )
-      } );
+          map: new THREE.TextureLoader().setCrossOrigin(url_root).load( vr_photo, function () {
+            vm.$store.dispatch('clearPreload')
+          })
+        })
       this.mesh = new THREE.Mesh( this.geometry, this.material )
 	    this.scene.add( this.mesh )
 	    this.renderer = new THREE.WebGLRenderer()
@@ -172,7 +176,9 @@ export default {
 <style lang="css">
 #pano {
     overflow: hidden;
-    height: inherit;
+    width: 100%;
+    height: 100%;
+    position: absolute;
 }
 #pano canvas{
   display: block;

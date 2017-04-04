@@ -27,6 +27,9 @@ export default {
     $('.ui.user.sidebar')
       .sidebar('attach events', '.account.button')
     ;
+    $('.ui.vr-sidebar.sidebar')
+      .sidebar('attach events', '.toc.item')
+    ;
   }
 }
 </script>
