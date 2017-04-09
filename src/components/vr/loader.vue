@@ -95,7 +95,7 @@ export default {
   animation: rotate 2s infinite linear;
 }
 .loader-line-mask.one .loader-line {
-  box-shadow: inset 0 0 0 8px #77C170;
+  box-shadow: inset 0 0 0 8px #1de9b6;
 }
 .loader-line-mask.two {
   -webkit-animation: rotate 1.8s 0.5s infinite linear;
@@ -104,7 +104,7 @@ export default {
   animation: rotate 1.8s 0.5s infinite linear;
 }
 .loader-line-mask.two .loader-line {
-  box-shadow: inset 0 0 0 8px #F25F5C;
+  box-shadow: inset 0 0 0 8px #FF5252;
 }
 .loader-line-mask.three {
   -webkit-animation: rotate 2s 1s infinite linear;
@@ -113,7 +113,7 @@ export default {
   animation: rotate 2s 1s infinite linear;
 }
 .loader-line-mask.three .loader-line {
-  box-shadow: inset 0 0 0 8px #FFE066;
+  box-shadow: inset 0 0 0 8px #FFc400;
 }
 .loader-line-mask.four {
   -webkit-animation: rotate 1.8s 1.4s infinite linear;
@@ -122,7 +122,7 @@ export default {
   animation: rotate 1.8s 1.4s infinite linear;
 }
 .loader-line-mask.four .loader-line {
-  box-shadow: inset 0 0 0 8px #247BA0;
+  box-shadow: inset 0 0 0 8px #0097a7;
 }
 lesshat-selector {
   -lh-property: 0; }

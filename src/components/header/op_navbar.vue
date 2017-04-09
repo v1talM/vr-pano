@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="ui large secondary inverted fixed pointing menu vrbar">
+  <div class="ui large secondary inverted fixed pointing menu opbar">
     <div class="ui container">
       <a class="toc item" >
         <i class="sidebar icon"></i>
@@ -35,10 +35,11 @@ export default {
 </script>
 
 <style lang="sass">
-  .ui.secondary.pointing.menu.large.menu.vrbar
+  .ui.secondary.pointing.menu.large.menu.opbar
     background-color: transparent
-  .ui.secondary.pointing.menu.large.menu.vrbar a.item
+    box-shadow: none
+  .ui.secondary.pointing.menu.large.menu.opbar a.item
     color: #ffffff !important
-  .ui.secondary.pointing.menu.large.menu.vrbar a.item:hover
+  .ui.secondary.pointing.menu.large.menu.opbar a.item:hover
     color: #0097a7 !important
 </style>

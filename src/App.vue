@@ -32,7 +32,7 @@ export default {
         })
       ;
       // create sidebar and attach to menu open
-      
+
   }
 }
 </script>

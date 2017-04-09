@@ -24,7 +24,8 @@ module.exports = {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
       'semantic'  : path.resolve(__dirname, '../node_modules/semantic-ui-css/semantic.min.js'),
-      'three' : path.resolve(__dirname, '../node_modules/three/build/three')
+      'three' : path.resolve(__dirname, '../node_modules/three/build/three'),
+      'velocity': path.resolve(__dirname, '../node_modules/velocity-animate'),
     }
   },
   module: {

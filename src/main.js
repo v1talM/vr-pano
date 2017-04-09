@@ -4,6 +4,12 @@ import router from './router'
 import store from './store'
 Vue.config.productionTip = false
 
+router.beforeEach((to, from, next) => {
+  $('.ui.user.sidebar')
+    .sidebar('hide')
+  ;
+  next()
+})
 new Vue({
   el: '#app',
   router,

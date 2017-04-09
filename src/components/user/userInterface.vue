@@ -64,28 +64,36 @@
           </div>
         </div>
         <div class="item item-1">
-          <a href="" class="icon-box item__icon">
+          <router-link :to="{name: 'user', params: {id: auth.authUser.id}}" class="icon-box item__icon">
             <span class="icon-box__inner m--left">
               <i class="fa alarm outline icon"></i>
             </span>
             <span class="icon-box__inner m--right">
               <i class="fa alarm outline icon"></i>
             </span>
-          </a>
-          <a href="" class="item__name">我的消息</a>
-          <a class="ui circular label">0</a>
+          </router-link>
+          <router-link :to="{name: 'user', params: {id: auth.authUser.id}}" class="item__name">
+            我的消息
+          </router-link>
+          <router-link :to="{name: 'user', params: {id: auth.authUser.id}}" class="ui circular label">
+            0
+          </router-link>
         </div>
         <div class="item item-2">
-          <a href="" class="icon-box item__icon">
+          <router-link :to="{name: 'user', params: {id: auth.authUser.id}}" class="icon-box item__icon">
             <span class="icon-box__inner m--left">
               <i class="fa paint brush icon"></i>
             </span>
             <span class="icon-box__inner m--right">
               <i class="fa paint brush icon"></i>
             </span>
-          </a>
-          <a href="" class="item__name">我的作品</a>
-          <a class="ui circular label">{{ auth.authUser.productsCount }}</a>
+          </router-link>
+          <router-link :to="{name: 'user', params: {id: auth.authUser.id}}" class="item__name">
+            我的作品
+          </router-link>
+          <router-link :to="{name: 'user', params: {id: auth.authUser.id}}" class="ui circular label">
+            {{ auth.authUser.productsCount }}
+          </router-link>
         </div>
       </div>
     </div>

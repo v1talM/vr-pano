@@ -1,7 +1,13 @@
 <template lang="html">
   <div class="ui center vertical aligned segment portfolio">
-    <div class="ui stackable four column container grid">
-      <div class="column" v-for="vr in vr_list">
+      <transition-group
+      class="ui stackable four column container grid"
+      tag="div"
+      v-bind:css="false"
+      v-on:before-enter="beforeEnter"
+      v-on:enter="enter"
+      v-on:leave="leave">
+        <div class="column" v-for="(vr, index) in computedList" :key="vr.id">
         <div class="ui card vr-portfolio">
           <div class="image">
             <router-link :to="{name: 'vr', params: {id: vr.id}}">
@@ -35,18 +41,19 @@
           </div>
         </div>
       </div>
-    </div>
+    </transition-group>
   </div>
 </template>
 
 <script>
 import portfolio from '@/api/portfolio'
 import {url_root} from '@/env'
+import Velocity from 'velocity'
 import {mapState, mapActions} from 'vuex'
 export default {
   data () {
     return {
-      root: url_root
+      root: url_root,
     }
   },
   methods: {
@@ -56,7 +63,30 @@ export default {
       'pushVRList',
       'setPage',
       'setMaxPage'
-    ])
+    ]),
+    beforeEnter: function (el) {
+      el.style.opacity = 0
+    },
+    enter: function (el, done) {
+      var delay = el.dataset.index * 150
+      setTimeout(function () {
+        Velocity(
+          el,
+          { opacity: 1 },
+          { complete: done }
+        )
+      }, delay)
+    },
+    leave: function (el, done) {
+      var delay = el.dataset.index * 150
+      setTimeout(function () {
+        Velocity(
+          el,
+          { opacity: 0, height: 0 },
+          { complete: done }
+        )
+      }, delay)
+    }
   },
   computed: {
     ...mapState({
@@ -64,7 +94,14 @@ export default {
       size: state => state.portfolio.size,
       vr_list: state => state.portfolio.VR_List,
       is_max: state => state.portfolio.is_max,
-    })
+      query: state => state.search.query,
+    }),
+    computedList () {
+      var vm = this
+      return this.vr_list.filter(item => {
+        return item.pro_title.indexOf(vm.query) !== -1
+      })
+    }
   },
   created () {
     if(!this.is_max){

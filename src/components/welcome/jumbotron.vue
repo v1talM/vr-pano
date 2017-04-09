@@ -10,7 +10,7 @@
                 <p>Exploring it just go easier</p>
               </h1>
               <div class="ui fluid icon input vr-search transition hidden">
-                <input type="text" placeholder="Search for VR types, names & more...">
+                <input type="text" placeholder="Search for VR types, names & more..." @input="updateQuery">
                 <i class="search icon"></i>
               </div>
           </div>
@@ -23,7 +23,13 @@
 
 <script>
 import navbar from '@/components/header/jumb_navbar'
+import {mapState} from 'vuex'
 export default {
+  computed: {
+    ...mapState({
+      query: state => state.search.query
+    })
+  },
   mounted () {
     $('.ui.dropdown')
       .dropdown()
@@ -42,6 +48,11 @@ export default {
   },
   components: {
     navbar
+  },
+  methods: {
+    updateQuery (e) {
+      this.$store.commit('updateQuery', e.target.value)
+    }
   }
 }
 </script>
