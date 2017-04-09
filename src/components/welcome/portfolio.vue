@@ -99,7 +99,10 @@ export default {
     computedList () {
       var vm = this
       return this.vr_list.filter(item => {
-        return item.pro_title.indexOf(vm.query) !== -1
+        return (item.pro_title.indexOf(vm.query) !== -1) ||
+               (item.user.name.toLowerCase().indexOf(vm.query.toLowerCase()) !== -1) ||
+               (item.user.email.toLowerCase().indexOf(vm.query.toLowerCase()) !== -1)
+
       })
     }
   },
