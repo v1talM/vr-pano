@@ -9,8 +9,8 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    { path: '/', name: 'welcome', component: Welcome },
-    { path: '/vr/:id', name: 'vr', component: VR },
-    { path: '/user/:id', name: 'user', component: UserProfile}
+    { path: '/', name: 'welcome', component: Welcome, meta:{title: '首页 - LaraVR'} },
+    { path: '/vr/:id', name: 'vr', component: VR, meta:{title: 'VR全景 - LaraVR'} },
+    { path: '/user/:id', name: 'user', component: UserProfile, meta:{title: '用户中心 - LaraVR'}}
   ],
 })

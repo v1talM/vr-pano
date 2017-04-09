@@ -6,6 +6,7 @@
 <script>
 import api from '@/api/vr'
 import {url_root} from '@/env'
+import {setTitle} from '@/helper'
 window.THREE = require('three')
 export default {
   data () {
@@ -25,11 +26,13 @@ export default {
       material: null,
     }
   },
-  mounted () {
+  beforeCreate () {
     this.$store.dispatch('setPreload')
     const vrid = this.$route.params.id
     api.getVRById(vrid).then( res => {
       this.vr = res.data.data
+      //设置页面标题
+      setTitle(this.vr.pro_title)
       this.$store.dispatch('setVR', this.vr)
       this.initVR()
     }).catch( error => {
