@@ -6,11 +6,11 @@
             <div class="five wide column">
               <div class="ui items">
                 <div class="item meta info">
-                  <div class="ui tiny circular image">
-                    <img :src="require('@/assets/logo.png')">
+                  <div class="ui tiny avatar image">
+                    <img :src="url_root + user.avatar">
                   </div>
                   <div class="middle aligned content">
-                    <div class="header">Ian Vital</div>
+                    <div class="header">{{ user.name }}</div>
                     <div class="computer only">
                       <div class="meta">
                         <span class="price"><i class="weibo icon"></i> vital</span>
@@ -19,7 +19,7 @@
                         <span class="price"><i class="wechat icon"></i> rongyuxxx</span>
                       </div>
                       <div class="meta">
-                        <span class="price"><i class="calendar icon"></i> Joined April 2017</span>
+                        <span class="price"><i class="calendar icon"></i> 加入于 {{ user.created_at }}</span>
                       </div>
                     </div>
                   </div>
@@ -31,7 +31,7 @@
                 <div class="statistic">
                   <div class="label">作品数 </div>
                   <div class="value">
-                    22
+                    {{ count }}
                   </div>
                 </div>
                 <div class="statistic">
@@ -95,14 +95,14 @@
             </div>
           </div>
           <div class="eight wide column">
-            <div class="ui fluid card">
+            <div class="ui fluid card" v-for="profile in productList">
               <div class="content">
-                <img class="left floated avatar ui image" :src="require('@/assets/logo.png')">
-                <div class="header"><a href="#">Totora is cute</a></div>
-                <div class="meta">30分钟前 · Ian Vital </div>
+                <img class="left floated avatar ui image" :src="url_root + user.avatar">
+                <div class="header"><a href="#">{{ profile.pro_title }} </a></div>
+                <div class="meta">{{ profile.created_at }} · {{ user.name }} </div>
               </div>
               <div class="image">
-                <img :src="require('@/assets/img/green.png')">
+                <img :src="url_root + profile.pro_thumb">
               </div>
               <div class="footer content">
                 <span class="right floated"> <i class="heart outline like icon"></i> 17 </span>
@@ -157,7 +157,21 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
+import {url_root} from '@/env'
 export default {
+  data () {
+    return {
+      url_root: url_root
+    }
+  },
+  props: ['count'],
+  computed: mapState({
+    user: state => state.user.user,
+    productList () {
+      return this.user.products.slice(0,8)
+    }
+  })
 }
 </script>
 <style lang="sass">

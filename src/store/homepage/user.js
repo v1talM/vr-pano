@@ -1,29 +1,19 @@
-import login from '@/api/login'
+import user from '@/api/user'
 const state = {
-  authUser: null
+  user: {},
 }
-
 const mutations = {
-  SET_AUTH_USER (state, authUser) {
-    state.authUser = authUser
-  },
-  CLEAR_AUTH_USER (state) {
-    state.authUser = null
+  SET_USER_OBJ (state, user) {
+    state.user = user
   }
 }
 
 const actions = {
-  loginUser ({}, user) {
-    return login.getAccessToken(user)
+  getUserDataById ({}, id) {
+    return user.getUserDataById(id)
   },
-  getUserData({}, header) {
-    return login.getUserData(header)
-  },
-  setAuthUser({commit}, user) {
-    commit('SET_AUTH_USER', user)
-  },
-  logoutUser({commit}){
-    commit('CLEAR_AUTH_USER')
+  setUserData ({commit}, data) {
+    commit('SET_USER_OBJ', data)
   }
 }
 

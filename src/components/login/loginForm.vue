@@ -101,7 +101,6 @@ export default {
         var msg = res.data.info
         const vm = this
         swal({
-          title: 'Success!',
           text: msg,
           type: 'success'
         }).then(function () {
@@ -119,7 +118,6 @@ export default {
           msg += '<br />' + err.password
         }
         swal({
-          title: 'Error!',
           text: msg,
           type: 'error'
         })
@@ -146,14 +144,12 @@ export default {
             window.localStorage.setItem('authUser', JSON.stringify(authUser))
             this.$store.dispatch('setAuthUser', authUser).then(res => {
               swal({
-                title: '登录成功!',
                 text: '欢迎回来! '+ authUser.name,
                 type: 'success'
               })
             })
           }).catch(error => {
             swal({
-              title: 'Error!',
               text: '获取用户信息失败,请联系管理员',
               type: 'error'
             })
@@ -161,7 +157,6 @@ export default {
         }
       }).catch(error => {
         swal({
-          title: 'Error!',
           text: '登录失败,请检查用户名和密码',
           type: 'error'
         })
