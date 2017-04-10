@@ -2,7 +2,9 @@
   <div class="ui vertical vr-sidebar overlay sidebar menu">
     <a class="item brand">
       <div class="content">
-        <img class="ui medium image brand" src="" alt="vr-pano">
+        <router-link :to="{name: 'welcome'}">
+          <img class="ui medium image brand" :src="require('@/assets/brand.png')" alt="vr-pano">
+        </router-link>
       </div>
     </a>
     <a class="item">

@@ -18,8 +18,6 @@ export default {
     sidebar, userbar
   },
   mounted () {
-    $(".ui.image.logo").attr('src',require('@/assets/logo.png'))
-    $(".ui.medium.image.brand ").attr('src', require('@/assets/brand.png'))
     $('.masthead.material')
         .visibility({
           once: false,
@@ -87,4 +85,13 @@ export default {
     color: #0097a7
   .item.brand .content
     background-color: #0097a7
+    @media only screen and (min-width: 75rem)
+      .computer.only
+        display: block !important
+  @media only screen and (max-width: 26rem)
+    .computer.only
+      display: none !important
+  @media only screen and (max-width: 24rem)
+    .computer.only
+      display: none !important
 </style>
