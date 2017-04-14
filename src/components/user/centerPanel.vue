@@ -169,7 +169,7 @@ export default {
   computed: mapState({
     user: state => state.user.user,
     productList () {
-      return this.user.products.slice(0,8)
+      return this.user.products
     }
   })
 }

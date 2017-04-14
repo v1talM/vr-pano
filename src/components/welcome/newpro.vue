@@ -3,9 +3,9 @@
     <i class="plus icon"></i>
     <div class="menu">
       <div class="item">
-        <button class="circular ui big icon button newphoto">
-          <i class="icon photo"></i>
-        </button>
+        <router-link :to="{name: 'add-profile'}" class="circular ui big icon button newphoto">
+          <i class="icon image"></i>
+        </router-link>
       </div>
       <div class="item">
         <button class="circular ui big icon button newmail">

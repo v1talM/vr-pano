@@ -21,7 +21,7 @@ export default {
       count: 0
     }
   },
-  created () {
+  mounted () {
     $(".user.jumbtron").visibility({
       once: false,
       onBottomPassedReverse: function () {
