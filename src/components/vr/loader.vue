@@ -32,6 +32,7 @@ export default {
   height: 100%;
   text-align: center;
   z-index: 1100;
+  left: 0;
 }
 .vr-loader.vertical-centered-box:after {
   content: '';
