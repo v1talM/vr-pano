@@ -312,7 +312,6 @@ export default {
   left: 5px;
   top: 7px;
   }
-
 </style>
 <style lang="sass">
   .ui.segment.uploader
@@ -361,6 +360,10 @@ export default {
     opacity: 0
     cursor: pointer
     left: 0
-
+  @media (max-width: 26rem)
+    .ui.segment.uploader > .grid
+      margin: 5rem  1rem  1rem !important
+    .uploader-wrap .photo.area
+      padding: 2rem 0
 
 </style>
