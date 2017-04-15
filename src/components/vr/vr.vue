@@ -185,5 +185,6 @@ export default {
 }
 #pano canvas{
   display: block;
+  cursor: grab;
 }
 </style>
