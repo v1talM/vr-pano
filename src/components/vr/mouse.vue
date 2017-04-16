@@ -18,9 +18,8 @@ export default {
     display: block;
     width: 10rem;
     height: 4rem;
-    position: absolute;
     top: calc(50% - 2rem);
-    text-align: center;
+    z-index: 1100
   }
   .mouse {
     height: 100%;

@@ -1,5 +1,5 @@
 <template lang="html">
-  <div style="height: inherit;display:flex;justify-content:center;">
+  <div id="vr-container">
     <navbar></navbar>
     <vr></vr>
     <loader v-if="preload"></loader>
@@ -41,4 +41,25 @@ export default {
 </script>
 
 <style lang="css">
+#vr-container{
+  height: inherit;
+  display:-webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content:center;
+  justify-content:center;
+  -moz-box-pack:center;
+  -webkit--moz-box-pack:center;
+  box-pack:center;
+  align-items:center;
+  -webkit-align-items:center;
+  box-align:center;
+  -moz-box-align:center;
+  -webkit-box-align:center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
 </style>

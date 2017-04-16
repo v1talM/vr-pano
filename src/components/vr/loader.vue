@@ -126,7 +126,8 @@ export default {
   box-shadow: inset 0 0 0 8px #0097a7;
 }
 lesshat-selector {
-  -lh-property: 0; }
+  -lh-property: 0;
+}
 @-webkit-keyframes rotate{ 0% { -webkit-transform: rotate(0deg); } 100% { -webkit-transform: rotate(360deg); }}
 @-moz-keyframes rotate{ 0% { -moz-transform: rotate(0deg); } 100% { -moz-transform: rotate(360deg); }}
 @-o-keyframes rotate{ 0% { -o-transform: rotate(0deg); } 100% { -o-transform: rotate(360deg); }}
@@ -135,7 +136,8 @@ lesshat-selector {
   zoom: 1;
 }
 lesshat-selector {
-  -lh-property: 0; }
+  -lh-property: 0;
+}
 @-webkit-keyframes fadein{ 0% { opacity: 0; } 100% { opacity: 1; }}
 @-moz-keyframes fadein{ 0% { opacity: 0; } 100% { opacity: 1; }}
 @-o-keyframes fadein{ 0% { opacity: 0; } 100% { opacity: 1; }}
