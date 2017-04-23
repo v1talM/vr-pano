@@ -1,3 +1,6 @@
+import api from '@/api/user'
+
+//根据localStorage存储的用户信息构造用户headers
 export const getHeader = function () {
   const tokenData = JSON.parse(window.localStorage.getItem('authUser'))
   const headers = {
@@ -6,6 +9,7 @@ export const getHeader = function () {
   }
   return headers
 }
+//动态设置页面标题
 export const setTitle = function (title) {
   let u = navigator.userAgent
   let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1

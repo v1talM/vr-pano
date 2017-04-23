@@ -33,6 +33,7 @@ export default {
   text-align: center;
   z-index: 1100;
   left: 0;
+  top: 0;
 }
 .vr-loader.vertical-centered-box:after {
   content: '';

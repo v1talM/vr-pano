@@ -5,7 +5,6 @@
     <loader v-if="preload"></loader>
     <mouse v-if="mouseGuide"></mouse>
   </div>
-
 </template>
 
 <script>
