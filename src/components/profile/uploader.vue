@@ -30,6 +30,15 @@
                     <label>作品描述</label>
                     <span class="bar"></span>
                   </div>
+                  <div class="material-input">
+                    <input
+                          class="input-item"
+                          type="text"
+                          disabled id="input-field1">
+                    <input @change="onFileChange" class="input-item-hidden" name="bgm" type="file" required />
+                    <label>背景音乐（可选）</label>
+                    <span class="bar"></span>
+                  </div>
                   <label class="label">作品分类</label>
                   <div class="material-input input-radio">
                     <input v-model="profile.pro_type" value="1"
@@ -96,7 +105,8 @@ export default {
         pro_description: '',
         pro_type: 1,
         pro_photo: '',
-        pro_thumb: ''
+        pro_thumb: '',
+        pro_bgm: '',
       }
     }
   },
@@ -108,6 +118,7 @@ export default {
         pro_title: this.profile.pro_title,
         pro_thumb: this.profile.pro_thumb,
         pro_photo: this.profile.pro_photo,
+        pro_bgm: this.profile.pro_bgm,
         pro_type: this.profile.pro_type,
         pro_description: this.profile.pro_description,
         user_id: this.user.id
@@ -125,7 +136,8 @@ export default {
           console.log('已上传 '+ percent + '%')
           $('.ui.upload.progress').progress('set percent', percent)
         }
-      }).then(res => {
+      })
+      .then(res => {
         const btn = $(".material-button")
         const loadBar = btn.children("div.progress")
         const loadSVG = $(".material-button .load")
@@ -167,6 +179,28 @@ export default {
       }
       if( e.target.name == 'bgm'){
           this.createBackgroundMusic(file)
+      }
+    },
+    createBackgroundMusic (file) {
+      if(typeof FileReader==='undefined'){
+        swal({
+          text: '您的浏览器不支持图片上传，请升级您的浏览器',
+          type: 'error'
+        })
+        return false;
+      }
+      if(file[0].size  > max_upload_size){
+        swal({
+          text: '您的文件过大,请选择'+ max_upload_size_m +'M以下的文件',
+          type: 'error'
+        })
+        return false
+      }
+      var vm = this;
+      var reader = new FileReader();
+      reader.readAsDataURL(file[0]);
+      reader.onload = function(e) {
+          vm.profile.pro_bgm = e.target.result;
       }
     },
     createThumbImage (file) {
@@ -274,6 +308,15 @@ export default {
     color: #ffffff;
     border-radius: .125rem;
     font-size: .875rem;
+  }
+  .material-form .container .material-input .input-item-hidden{
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
   }
   .material-form .container .material-input input {
     background-color: transparent;
@@ -622,7 +665,7 @@ export default {
     margin-bottom: 1rem
   .uploader-wrap .info.area
     width: 100%
-    padding: 2rem 1rem
+    padding: 0 1rem
     font-weight: normal
     font-size: 1.28571429rem
     text-align: left
