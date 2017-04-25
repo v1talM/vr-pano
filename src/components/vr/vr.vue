@@ -58,8 +58,7 @@ export default {
       this.geometry.scale( - 1, 1, 1 );
       var vr_photo = url_root + this.vr.pro_photo
       //this.vr_photo.src = require('@/assets/img/photo_88764.jpg')
-      var audio = new Audio(url_root + this.vr.pro_bgm)
-      this.bgm_url = audio.src
+      this.bgm_url = url_root + this.vr.pro_bgm
       var vm = this
       this.material = new THREE.MeshBasicMaterial( {
           map: new THREE.TextureLoader().setCrossOrigin(url_root).load( vr_photo, function () {
