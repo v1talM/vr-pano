@@ -36,7 +36,8 @@
                           type="text"
                           disabled id="input-field1">
                     <input @change="onFileChange" class="input-item-hidden" name="bgm" type="file" required />
-                    <label>背景音乐（可选）</label>
+                    <label v-if="! profile.pro_bgm_name">背景音乐（可选）</label>
+                    <label v-if="profile.pro_bgm_name">{{ profile.pro_bgm_name }}</label>
                     <span class="bar"></span>
                   </div>
                   <label class="label">作品分类</label>
@@ -107,6 +108,7 @@ export default {
         pro_photo: '',
         pro_thumb: '',
         pro_bgm: '',
+        pro_bgm_name: ''
       }
     }
   },
@@ -196,6 +198,7 @@ export default {
         })
         return false
       }
+      this.profile.pro_bgm_name = file[0].name
       var vm = this;
       var reader = new FileReader();
       reader.readAsDataURL(file[0]);

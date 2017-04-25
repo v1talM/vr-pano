@@ -1,14 +1,18 @@
 <template lang="html">
   <div id="pano">
-
+    <audio v-if="!preload && vr.pro_bgm" :src="bgm_url" autoplay="true" loop="loop"></audio>
   </div>
 </template>
 <script>
 import api from '@/api/vr'
 import {url_root} from '@/env'
 import {setTitle} from '@/helper'
+import {mapState} from 'vuex'
 window.THREE = require('three')
 export default {
+  computed: mapState({
+    preload: state => state.vr.preload
+  }),
   data () {
     return {
       vr: null,
@@ -24,6 +28,7 @@ export default {
       container: null, mesh: null,
       geometry: null, vr_photo: null,
       material: null,
+      bgm_url: null
     }
   },
   beforeCreate () {
@@ -53,6 +58,8 @@ export default {
       this.geometry.scale( - 1, 1, 1 );
       var vr_photo = url_root + this.vr.pro_photo
       //this.vr_photo.src = require('@/assets/img/photo_88764.jpg')
+      var audio = new Audio(url_root + this.vr.pro_bgm)
+      this.bgm_url = audio.src
       var vm = this
       this.material = new THREE.MeshBasicMaterial( {
           map: new THREE.TextureLoader().setCrossOrigin(url_root).load( vr_photo, function () {
