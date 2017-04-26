@@ -1,5 +1,5 @@
-export const api_root = 'http://vr-server.sparki.cn/api/'
-export const url_root = 'http://vr-server.sparki.cn/'
+export const api_root = 'https://vr-server.sparki.cn/api/'
+export const url_root = 'https://vr-server.sparki.cn/'
 export const upload_url = 'product'
 export const max_upload_size_m = 20
 export const max_upload_size = max_upload_size_m * 1024 * 1024
