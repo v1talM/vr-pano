@@ -57,17 +57,11 @@ export default {
       this.geometry = new THREE.SphereGeometry( 500, 60, 40 );
       this.geometry.scale( - 1, 1, 1 );
       var vr_photo = url_root + this.vr.pro_photo
-      var img = new Image;
-      img.crossOrigin = 'Anonymous'
-      img.onload = function () {
-
-      }
-      img.src = vr_photo
       //this.vr_photo.src = require('@/assets/img/photo_88764.jpg')
       this.bgm_url = url_root + this.vr.pro_bgm
       var vm = this
       this.material = new THREE.MeshBasicMaterial( {
-          map: new THREE.TextureLoader().load( img.src, function () {
+          map: new THREE.TextureLoader().setCrossOrigin('https://vr.sparki.cn/').load( vr_photo, function () {
             vm.$store.dispatch('clearPreload')
           })
         })
