@@ -61,7 +61,7 @@ export default {
       this.bgm_url = url_root + this.vr.pro_bgm
       var vm = this
       this.material = new THREE.MeshBasicMaterial( {
-          map: new THREE.TextureLoader().setCrossOrigin(url_root).load( vr_photo, function () {
+          map: new THREE.TextureLoader().load( vr_photo, function () {
             vm.$store.dispatch('clearPreload')
           })
         })
