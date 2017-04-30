@@ -22,12 +22,12 @@
                           class="input-item"
                           type="text"
                           required id="input-field1">
-                    <label>作品名称</label>
+                    <label>作品名称 - （不超过20字符）</label>
                     <span class="bar"></span>
                   </div>
                   <div class="material-input">
                     <textarea class="input-item" v-model="profile.pro_description" required></textarea>
-                    <label>作品描述</label>
+                    <label>作品描述 - （不超过50字符）</label>
                     <span class="bar"></span>
                   </div>
                   <div class="material-input">
