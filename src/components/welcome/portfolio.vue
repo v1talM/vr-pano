@@ -174,6 +174,8 @@ export default {
     padding: 0 .625rem 0 1rem
   .ui.author.grid .column
     padding: 0rem 0 1rem 0
+  .ui.segment.portfolio .card.vr-portfolio .ui.image.vr-thumb
+    min-height: 9.625rem
   .ui.segment.portfolio .card.vr-portfolio .avatar
     width: 2.5rem
     height: 2.5rem
