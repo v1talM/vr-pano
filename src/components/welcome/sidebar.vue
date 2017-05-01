@@ -7,15 +7,9 @@
         </router-link>
       </div>
     </a>
-    <a class="item">
-      <i class="photo icon"></i>图片画廊
-    </a>
-    <a class="item">
-      <i class="world icon"></i>VR看世界
-    </a>
-    <a class="item">
-      <i class="university icon"></i>高校全景
-    </a>
+    <router-link :to="{name: 'city'}" class="item"><i class="photo icon"></i> 城市画廊</router-link>
+    <router-link :to="{name: 'scenery'}" class="item"><i class="world icon"></i> VR看世界</router-link>
+    <router-link :to="{name: 'university'}" class="item"><i class="university icon"></i> 高校全景</router-link>
   </div>
 </template>
 

@@ -36,7 +36,7 @@
                           type="text"
                           disabled id="input-field1">
                     <input @change="onFileChange" class="input-item-hidden" name="bgm" type="file" required />
-                    <label v-if="! profile.pro_bgm_name">背景音乐（可选）</label>
+                    <label v-if="! profile.pro_bgm_name">背景音乐 -（可选）</label>
                     <label v-if="profile.pro_bgm_name">{{ profile.pro_bgm_name }}</label>
                     <span class="bar"></span>
                   </div>

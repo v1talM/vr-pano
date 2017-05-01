@@ -92,6 +92,7 @@ export default {
     ...mapState({
       page: state => state.portfolio.page,
       size: state => state.portfolio.size,
+      type: state => state.portfolio.type,
       vr_list: state => state.portfolio.VR_List,
       is_max: state => state.portfolio.is_max,
       query: state => state.search.query,
@@ -110,15 +111,19 @@ export default {
     if(!this.is_max){
       const page = this.$store.state.portfolio.page
       const size = this.$store.state.portfolio.size
-      portfolio.getVRList(page, size).then( res => {
-        const vr_list = res.data.data
-        const list = []
-        for (var i = 0; i < vr_list.length; i++) {
-          list.push(vr_list[i])
-        }
-        this.pushVRList(list)
-        this.setPage(page + 1)
-      })
+      const type = this.$store.state.portfolio.type
+      const vm = this
+      setTimeout(function () {
+        portfolio.getVRList(page, size, type).then( res => {
+          const vr_list = res.data.data
+          const list = []
+          for (var i = 0; i < vr_list.length; i++) {
+            list.push(vr_list[i])
+          }
+          vm.pushVRList(list)
+          vm.setPage(page + 1)
+        })
+      }, 300)
     }
   },
   mounted () {
@@ -130,8 +135,10 @@ export default {
             onBottomVisible: function() {
               const page = vm.page
               const size = vm.size
-              if( !vm.is_max ){
-                portfolio.getVRList(page, size).then(res => {
+              const type = vm.type
+              if( !vm.is_max && page > 1){
+                setTimeout(function () {
+                  portfolio.getVRList(page, size, type).then(res => {
                     const vr_list = res.data.data
                     if( vr_list.length < 1) {
                       vm.setMaxPage()
@@ -143,9 +150,10 @@ export default {
                     vm.pushVRList(list).then( res => {
                       if(!vm.is_max)
                         vm.setPage(page + 1)
-                   })
-                 })
-               }
+                    })
+                  })
+                }, 300)
+              }
             }
           })
       ;

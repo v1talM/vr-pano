@@ -6,11 +6,12 @@ import {api_root} from './../env'
 Vue.use(VueAxios, Axios)
 
 export default {
-  getVRList (page, size) {
+  getVRList (page, size, type) {
     return Vue.axios.get(api_root + 'product/get', {
       params: {
         page: page,
-        size: size
+        size: size,
+        type: type
       }
     });
   }

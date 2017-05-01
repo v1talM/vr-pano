@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="">
-    <jumbotron category='index'></jumbotron>
+    <jumbotron category="university"></jumbotron>
     <newpro></newpro>
     <category></category>
     <portfolio></portfolio>
@@ -14,7 +14,7 @@ import newpro from '@/components/welcome/newpro'
 import category from '@/components/welcome/category'
 import portfolio from '@/components/welcome/portfolio'
 import loader from '@/components/welcome/loader'
-import {index_id} from '@/env'
+import {university_id} from '@/env'
 export default {
   components: {
     jumbotron, newpro, portfolio, category, loader
@@ -27,8 +27,12 @@ export default {
   created () {
     this.$store.dispatch('clearVRList')
     this.$store.dispatch('clearMaxPage')
-    this.$store.dispatch('setVRType', index_id)
+    this.$store.dispatch('setVRType', university_id)
     this.$store.dispatch('setPage', 1)
   }
 }
+
 </script>
+
+<style lang="css">
+</style>

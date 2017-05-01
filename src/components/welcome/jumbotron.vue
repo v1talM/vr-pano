@@ -1,13 +1,27 @@
 <template lang="html">
-  <div class="ui vertical masthead center material aligned segment">
+  <div class="ui vertical masthead center material aligned segment" v-bind:style="{backgroundImage: 'url(' + getBackgroundImg + ')'}">
     <navbar></navbar>
     <div class="ui container">
       <div class="ui stackable centered grid">
         <div class="ui row">
           <div class="ten wide column center aligned" style="margin-top: 4.5625rem !important">
               <h1 class="ui inverted  header vr-slogan transition hidden">
-                <p>It's a big world</p>
-                <p>Exploring it just go easier</p>
+                <div v-if="category == 'university'">
+                  <p>A picture is a poem without words</p>
+                  <p>Do you think so?</p>
+                </div>
+                <div v-if="category == 'scenery'">
+                  <p>Share your scenery</p>
+                  <p>Make every moment has its VR.</p>
+                </div>
+                <div v-if="category == 'city'">
+                  <p>Browse through beautiful city</p>
+                  <p>Romance in heart.</p>
+                </div>
+                <div v-if="category == 'index'">
+                  <p>It's a big world</p>
+                  <p>Exploring it just go easier.</p>
+                </div>
               </h1>
               <div class="ui fluid icon input vr-search transition hidden">
                 <input type="text" placeholder="Search for VR types, names & more..." @input="updateQuery">
@@ -28,8 +42,24 @@ export default {
   computed: {
     ...mapState({
       query: state => state.search.query
-    })
+    }),
+    getBackgroundImg () {
+      switch (this.category) {
+        case 'scenery':
+          return require('@/assets/img/scenery.png')
+          break;
+        case 'city':
+          return require('@/assets/img/nashville.png')
+          break;
+        case 'university':
+          return require('@/assets/img/campus.png')
+          break;
+        default:
+          return require('@/assets/img/index.png')
+      }
+    }
   },
+  props: ['category'],
   mounted () {
     $('.ui.dropdown')
       .dropdown()
@@ -182,7 +212,7 @@ export default {
   .ui.menu .dropdown.item .menu
     box-shadow: 1px 3px 5px rgba(0,0,0,.15),3px 5px 7px rgba(0,0,0,.2)
   .ui.vertical.material.segment
-    background-image: url('./../../assets/img/header2.png')
+    background-image: url('./../../assets/img/index.png')
     background-position: center
     background-repeat: no-repeat
     background-size: cover
