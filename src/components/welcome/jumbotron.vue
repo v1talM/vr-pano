@@ -24,8 +24,8 @@
                 </div>
               </h1>
               <div class="ui fluid icon input vr-search transition hidden">
-                <input type="text" placeholder="Search for VR types, names & more..." @input="updateQuery">
-                <i class="search icon"></i>
+                <input type="text" placeholder="Search for VR types, names & more..." v-model="searchInput" @input="updateQuery" @keyup.enter="search">
+                <i class="search icon" @click="search"></i>
               </div>
           </div>
         </div>
@@ -39,6 +39,11 @@
 import navbar from '@/components/header/jumb_navbar'
 import {mapState} from 'vuex'
 export default {
+  data () {
+    return {
+      searchInput: ''
+    }
+  },
   computed: {
     ...mapState({
       query: state => state.search.query
@@ -81,7 +86,10 @@ export default {
   },
   methods: {
     updateQuery (e) {
-      this.$store.commit('updateQuery', e.target.value)
+      this.$store.commit('updateQuery', this.searchInput)
+    },
+    search () {
+      console.log(this.searchInput)
     }
   }
 }
@@ -142,6 +150,10 @@ export default {
    }
    .secondary.pointing.menu .toc.item {
      display: none;
+   }
+   .ui.icon.input>i.icon.search{
+     cursor: pointer;
+     pointer-events: all;
    }
   @media only screen and (max-width: 44rem) {
 

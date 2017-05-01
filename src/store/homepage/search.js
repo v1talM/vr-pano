@@ -4,6 +4,9 @@ const state = {
 const mutations = {
   updateQuery (state, query) {
     state.query = query
+  },
+  clearQuery (state) {
+    state.query = ''
   }
 }
 const actions = {

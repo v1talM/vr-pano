@@ -25,10 +25,11 @@ export default {
     ;
   },
   created () {
-    this.$store.dispatch('clearVRList')
     this.$store.dispatch('clearMaxPage')
     this.$store.dispatch('setVRType', scenery_id)
     this.$store.dispatch('setPage', 1)
+    this.$store.commit('clearQuery')
+    this.$store.dispatch('clearVRList')
   }
 }
 </script>
