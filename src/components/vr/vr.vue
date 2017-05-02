@@ -135,7 +135,6 @@ export default {
       this.renderer.render( this.scene, this.camera );
     },
     onDocumentMouseDown (event) {
-      console.log(event.clientX, event.clientY)
       this.isUserInteracting = true;
       this.onPointerDownPointerX = event.clientX;
       this.onPointerDownPointerY = event.clientY;

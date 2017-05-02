@@ -7,7 +7,7 @@ const mutations = {
   },
   clearQuery (state) {
     state.query = ''
-  }
+  },
 }
 const actions = {
 

@@ -89,7 +89,10 @@ export default {
       this.$store.commit('updateQuery', this.searchInput)
     },
     search () {
-      console.log(this.searchInput)
+      const input = this.searchInput
+      if(input != ''){
+        this.$router.push({name: 'search', query: { c: 'profiles', q: input }})
+      }
     }
   }
 }

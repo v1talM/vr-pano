@@ -7,6 +7,7 @@ import Profile from '@/pages/profile/profile'
 import Scenery from '@/pages/welcome/scenery'
 import City from '@/pages/welcome/city'
 import University from '@/pages/welcome/university'
+import Search from '@/pages/search/search'
 // const Welcome = resolve => require(['@/pages/welcome/welcome.vue'], resolve)
 // const VR = resolve => require(['@/pages/vr/vr.vue'], resolve)
 Vue.use(Router)
@@ -20,8 +21,8 @@ export default new Router({
     { path: '/category/scenery', name: 'scenery', component: Scenery, meta:{title: 'VR看世界 - LaraVR'}},
     { path: '/category/city', name: 'city', component: City, meta:{title: '城市画廊 - LaraVR'}},
     { path: '/category/university', name: 'university', component: University, meta:{title: '高校全景 - LaraVR'}},
+    { path: '/search', name: 'search', component: Search, meta:{title: '搜索 - LaraVR'}}
   ],
-  mode: 'history',
   scrollBehavior (to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
