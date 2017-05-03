@@ -24,12 +24,12 @@
               <div class="ten wide column">
                 <div class="left aligned">
                   <div class="header">
-                    <router-link :to="{name: 'vr', params: {id: vr.id}}">
+                    <router-link :to="{name: 'vr', params: {id: vr.id}}" :title="vr.pro_title">
                       {{ vr.pro_title }}
                     </router-link>
                   </div>
                   <div class="meta">
-                    Friends of <router-link :to="{name: 'user', params: {id: vr.user.id}}">{{ vr.user.name}}</router-link>
+                    Friends of <router-link :to="{name: 'user', params: {id: vr.user.id}}">{{ vr.user.name }}</router-link>
                    </div>
                 </div>
               </div>

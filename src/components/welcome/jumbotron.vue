@@ -6,6 +6,9 @@
         <div class="ui row">
           <div class="ten wide column center aligned" style="margin-top: 4.5625rem !important">
               <h1 class="ui inverted  header vr-slogan transition hidden">
+                <div v-if="category == 'search'">
+                  {{ this.searchInput }}
+                </div>
                 <div v-if="category == 'university'">
                   <p>A picture is a poem without words</p>
                   <p>Do you think so?</p>
@@ -23,10 +26,7 @@
                   <p>Exploring it just go easier.</p>
                 </div>
               </h1>
-              <div class="ui fluid icon input vr-search transition hidden">
-                <input type="text" placeholder="Search for VR types, names & more..." v-model="searchInput" @input="updateQuery" @keyup.enter="search">
-                <i class="search icon" @click="search"></i>
-              </div>
+
           </div>
         </div>
       </div>
@@ -37,17 +37,8 @@
 
 <script>
 import navbar from '@/components/header/jumb_navbar'
-import {mapState} from 'vuex'
 export default {
-  data () {
-    return {
-      searchInput: ''
-    }
-  },
   computed: {
-    ...mapState({
-      query: state => state.search.query
-    }),
     getBackgroundImg () {
       switch (this.category) {
         case 'scenery':
@@ -79,21 +70,9 @@ export default {
       interval: 500,
       duration: 1200
     })
-
   },
   components: {
     navbar
-  },
-  methods: {
-    updateQuery (e) {
-      this.$store.commit('updateQuery', this.searchInput)
-    },
-    search () {
-      const input = this.searchInput
-      if(input != ''){
-        this.$router.push({name: 'search', query: { c: 'profiles', q: input }})
-      }
-    }
   }
 }
 </script>
@@ -103,7 +82,7 @@ export default {
      display: none;
    }
    .masthead.segment {
-     min-height: 43.75rem;
+     min-height: 33.75rem;
      padding: 1em 0em;
    }
    .masthead .logo.item img {
@@ -233,8 +212,9 @@ export default {
     background-size: cover
     background-color: #80cbd3
   .ui.input.vr-search
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .15), 0 2px 3px 0 rgba(0, 0, 0, .2)
     transition: all 2s ease-in-out
+    flex: 1
+    margin: .5rem 2rem
   .ui.input.vr-search:hover
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .15), 0 2px 8px 0 rgba(0, 0, 0, .2)
   .ui.input.vr-search input
@@ -253,4 +233,6 @@ export default {
       margin-bottom: 1.5rem
     .vr-slogan p:first-child
       margin-bottom: .65rem
+    .ui.input.vr-search
+      margin: 0
 </style>

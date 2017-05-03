@@ -1,34 +1,34 @@
 <template lang="html">
   <div class="">
-    <jumbotron category='search'></jumbotron>
-    <newpro></newpro>
-    <category></category>
+    <navbar v-on:search="getSearchedResource"></navbar>
+    <copyright></copyright>
     <portfolio></portfolio>
-    <loader></loader>
   </div>
 </template>
 
 <script>
-import jumbotron from '@/components/welcome/jumbotron'
-import newpro from '@/components/welcome/newpro'
-import category from '@/components/welcome/category'
-import portfolio from '@/components/welcome/portfolio'
-import loader from '@/components/welcome/loader'
+import navbar from '@/components/header/jumb_navbar'
+import portfolio from '@/components/search/portfolio'
+import copyright from '@/components/search/copyright'
 import {search_url} from '@/env'
 export default {
   components: {
-    jumbotron, newpro, portfolio, category, loader
+    navbar, portfolio, copyright
   },
   mounted () {
     $('.ui.vr-sidebar.sidebar')
       .sidebar('attach events', '.toc.item')
     ;
+    $(".vr-search").transition({
+      animation: 'fly right',
+      interval: 500,
+      duration: 1200
+    })
   },
   created () {
     this.$store.dispatch('clearMaxPage')
     this.$store.dispatch('setVRType', 0)
     this.$store.dispatch('setPage', 1)
-    this.$store.commit('clearQuery')
     this.$store.dispatch('clearVRList')
     this.getSearchedResource()
   },
@@ -36,7 +36,9 @@ export default {
     getSearchedResource () {
       const query = this.$route.query
       this.axios.get(search_url, { params: { c: query.c, q: query.q } }).then(res => {
-        console.log(res)
+        const lists = res.data.data
+        const _this = this
+        _this.$store.dispatch('setVRList', lists)
       })
     }
   }
