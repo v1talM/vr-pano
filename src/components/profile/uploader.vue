@@ -35,7 +35,7 @@
                           class="input-item"
                           type="text"
                           disabled id="input-field1">
-                    <input @change="onFileChange" class="input-item-hidden" name="bgm" type="file" required />
+                    <input @change="onFileChange" class="input-item-hidden" name="bgm" type="file" />
                     <label v-if="! profile.pro_bgm_name">背景音乐 -（可选）</label>
                     <label v-if="profile.pro_bgm_name">{{ profile.pro_bgm_name }}</label>
                     <span class="bar"></span>
@@ -641,6 +641,7 @@ export default {
     background-position: center center
     background-repeat: no-repeat
     background-size: cover
+    min-height: 43.75rem
   .ui.uploader-wrap
     background-color: #2685FF
     display: flex

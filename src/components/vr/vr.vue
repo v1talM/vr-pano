@@ -28,7 +28,8 @@ export default {
       container: null, mesh: null,
       geometry: null, vr_photo: null,
       material: null,
-      bgm_url: null
+      bgm_url: null,
+      div_list: []
     }
   },
   beforeCreate () {
@@ -73,7 +74,6 @@ export default {
       this.renderer.setPixelRatio( window.devicePixelRatio )
       this.renderer.setSize( window.innerWidth, window.innerHeight )
       this.container.appendChild( this.renderer.domElement )
-
       /* 监听用户鼠标事件并绑定 */
       var onDocumentMouseDown = this.onDocumentMouseDown
       var onDocumentMouseMove = this.onDocumentMouseMove
@@ -205,5 +205,14 @@ export default {
 #pano canvas{
   display: block;
   cursor: grab;
+}
+.div-test{
+  background-color: #ff5505;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 0;
+  left:0;
+  transform: translateZ(0) translate(668px, 320.5px);
 }
 </style>

@@ -1,13 +1,13 @@
 <template lang="html">
   <div class="ui vertical big right user push sidebar menu">
-      <div class="login panel item" v-if="auth.authUser === null">
+      <div class="login panel item" v-if="!auth.authUser || auth.authUser.access_token == ''">
           <login-form></login-form>
           <div class="bottom brand">
             <a href="#" class="ui sub header">忘记密码?点我找回</a>
           </div>
       </div>
       <transition name="fade-out">
-        <div v-if="auth.authUser !== null">
+        <div v-if="auth.authUser && auth.authUser.access_token !== ''">
           <user-interface :auth="auth"></user-interface>
         </div>
       </transition>

@@ -8,7 +8,7 @@
         </router-link>
       </div>
       <div class="item">
-        <button class="circular ui big icon button newmail">
+        <button class="circular ui big icon button newmail" @click="showLogin()">
           <i class="icon mail"></i>
         </button>
       </div>
@@ -22,6 +22,13 @@ export default {
     $(".ui.button.newpro").dropdown({
       direction: 'upward'
     })
+  },
+  methods: {
+    showLogin () {
+      $('.ui.user.sidebar')
+        .sidebar('show')
+      ;
+    }
   }
 }
 </script>
