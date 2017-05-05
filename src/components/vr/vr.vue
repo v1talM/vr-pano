@@ -80,12 +80,12 @@ export default {
       var onDocumentTouchStart = this.onDocumentTouchStart
       var onDocumentTouchMove = this.onDocumentTouchMove
 
-      document.addEventListener( 'mousedown', onDocumentMouseDown, false )
-      document.addEventListener( 'mousemove', onDocumentMouseMove, false )
-      document.addEventListener( 'mouseup', onDocumentMouseUp, false )
-      document.addEventListener( 'wheel', onDocumentMouseWheel, false )
-      document.addEventListener( 'touchstart', onDocumentTouchStart, false )
-	    document.addEventListener( 'touchmove', onDocumentTouchMove, false )
+      this.container.addEventListener( 'mousedown', onDocumentMouseDown, false )
+      this.container.addEventListener( 'mousemove', onDocumentMouseMove, false )
+      this.container.addEventListener( 'mouseup', onDocumentMouseUp, false )
+      this.container.addEventListener( 'wheel', onDocumentMouseWheel, false )
+      this.container.addEventListener( 'touchstart', onDocumentTouchStart, false )
+	    this.container.addEventListener( 'touchmove', onDocumentTouchMove, false )
 
       document.addEventListener( 'dragover', function ( event ) {
           event.preventDefault();
