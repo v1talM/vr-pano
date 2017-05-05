@@ -15,7 +15,7 @@ export default {
   }),
   data () {
     return {
-      vr: null,
+      vr: null, mouse: null, raycaster: null,
       camera: null, scene: null, renderer:null,
       texture_placeholder: null,
       isUserInteracting: false,
@@ -51,6 +51,8 @@ export default {
     },
     init () {
       this.container = document.getElementById( 'pano' );
+      this.mouse = new THREE.Vector3();
+      this.raycaster = new THREE.Raycaster();
       this.camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
       this.camera.target = new THREE.Vector3( 0, 0, 0 );
       this.scene = new THREE.Scene();
@@ -87,17 +89,17 @@ export default {
       this.container.addEventListener( 'touchstart', onDocumentTouchStart, false )
 	    this.container.addEventListener( 'touchmove', onDocumentTouchMove, false )
 
-      document.addEventListener( 'dragover', function ( event ) {
+      this.container.addEventListener( 'dragover', function ( event ) {
           event.preventDefault();
           event.dataTransfer.dropEffect = 'copy';
       }, false );
-      document.addEventListener( 'dragenter', function ( event ) {
+      this.container.addEventListener( 'dragenter', function ( event ) {
           document.body.style.opacity = 0.5;
       }, false );
-      document.addEventListener( 'dragleave', function ( event ) {
+      this.container.addEventListener( 'dragleave', function ( event ) {
           document.body.style.opacity = 1;
       }, false );
-      document.addEventListener( 'drop', function ( event ) {
+      this.container.addEventListener( 'drop', function ( event ) {
           event.preventDefault();
           var reader = new FileReader();
           reader.addEventListener( 'load', function ( event ) {
@@ -135,6 +137,15 @@ export default {
       this.renderer.render( this.scene, this.camera );
     },
     onDocumentMouseDown (event) {
+      event.preventDefault();
+      this.mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+      this.mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+      this.raycaster.setFromCamera( this.mouse, this.camera );
+      var intersects = this.raycaster.intersectObjects( this.scene.children );
+    	if(intersects.length > 0){
+        var selected = intersects[0]
+        console.log(selected.point.x, selected.point.y, selected.point.z)
+      }
       this.isUserInteracting = true;
       this.onPointerDownPointerX = event.clientX;
       this.onPointerDownPointerY = event.clientY;
