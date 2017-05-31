@@ -8,9 +8,9 @@
         <img class="ui mini image logo" :src="require('@/assets/logo.png')" alt="vr-pano">
       </router-link>
       <div class="right menu">
-        <a class="item">图片画廊</a>
-        <a class="item">VR看世界</a>
-        <a class="item">高校全景</a>
+        <router-link :to="{name: 'city'}" class="item">城市画廊</router-link>
+        <router-link :to="{name: 'scenery'}" class="item">VR看世界</router-link>
+        <router-link :to="{name: 'university'}" class="item">高校全景</router-link>
       </div>
       <div class="ui item account" tabindex="0">
         <button class="circular ui account icon button">
