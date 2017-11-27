@@ -69,6 +69,7 @@ export default {
     },
     enter: function (el, done) {
       var delay = el.dataset.index * 150
+      el.style.opacity = 1
       //setTimeout(function () {
       //  Velocity(
       //    el,
