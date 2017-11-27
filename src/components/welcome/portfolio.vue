@@ -48,7 +48,7 @@
 <script>
 import portfolio from '@/api/portfolio'
 import {url_root} from '@/env'
-import Velocity from 'velocity'
+//import Velocity from 'velocity'
 import {mapState, mapActions} from 'vuex'
 export default {
   data () {
@@ -69,23 +69,23 @@ export default {
     },
     enter: function (el, done) {
       var delay = el.dataset.index * 150
-      setTimeout(function () {
-        Velocity(
-          el,
-          { opacity: 1 },
-          { complete: done }
-        )
-      }, delay)
+      //setTimeout(function () {
+      //  Velocity(
+      //    el,
+      //    { opacity: 1 },
+      //    { complete: done }
+      //  )
+      //}, delay)
     },
     leave: function (el, done) {
       var delay = el.dataset.index * 150
-      setTimeout(function () {
-        Velocity(
-          el,
-          { opacity: 0, height: 0 },
-          { complete: done }
-        )
-      }, delay)
+      //setTimeout(function () {
+      //  Velocity(
+      //    el,
+      //    { opacity: 0, height: 0 },
+      //    { complete: done }
+      //  )
+      //}, delay)
     }
   },
   computed: {
