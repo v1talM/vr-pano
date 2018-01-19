@@ -93,6 +93,7 @@ export default {
       }, delay)
     },
     infiniteHandler($state) {
+	const vm = this
       console.log('called')
       const page = vm.page
       const size = vm.size
