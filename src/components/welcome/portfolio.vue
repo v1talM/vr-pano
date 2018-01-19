@@ -41,7 +41,6 @@
           </div>
         </div>
       </div>
-      <infinite-loading @infinite="infiniteHandler"></infinite-loading>
     </transition-group>
   </div>
 </template>
@@ -53,9 +52,6 @@ import Velocity from 'velocity'
 import InfiniteLoading from 'vue-infinite-loading'
 import {mapState, mapActions} from 'vuex'
 export default {
-  components: {
-    InfiniteLoading,
-  },
   data () {
     return {
       root: url_root,
@@ -91,31 +87,6 @@ export default {
           { complete: done }
         )
       }, delay)
-    },
-    infiniteHandler($state) {
-	const vm = this
-      console.log('called')
-      const page = vm.page
-      const size = vm.size
-      const type = vm.type
-      if( !vm.is_max && page > 1){
-        setTimeout(function () {
-          portfolio.getVRList(page, size, type).then(res => {
-            const vr_list = res.data.data
-            if( vr_list.length < 1) {
-              vm.setMaxPage()
-            }
-            const list = []
-            for (var i = 0; i < vr_list.length; i++) {
-              list.push(vr_list[i])
-            }
-            vm.pushVRList(list).then( res => {
-              if(!vm.is_max)
-                vm.setPage(page + 1)
-            })
-          })
-        }, 300)
-      }
     }
   },
   computed: {
@@ -161,17 +132,35 @@ export default {
       $('.ui.portfolio .container.grid')
           .visibility({
             once: false,
-            observeChanges: true,
-	    initialCheck: false,
-	    target: '.ui.vr-loader .load-bar',
-	    onPassed: {
-		'80%': function(){console.log('hello')}
-	    },
+            observeChanges: false,
+            initialCheck: false,
+            target: '.ui.portfolio .container.grid',
             onBottomVisible: function() {
-
+              console.log('called')
+              const page = vm.page
+              const size = vm.size
+              const type = vm.type
+              if( !vm.is_max && page > 1){
+                setTimeout(function () {
+                  portfolio.getVRList(page, size, type).then(res => {
+                    const vr_list = res.data.data
+                    if( vr_list.length < 1) {
+                      vm.setMaxPage()
+                    }
+                    const list = []
+                    for (var i = 0; i < vr_list.length; i++) {
+                      list.push(vr_list[i])
+                    }
+                    vm.pushVRList(list).then( res => {
+                      if(!vm.is_max)
+                        vm.setPage(page + 1)
+                    })
+                  })
+                }, 300)
+              }
             }
           })
-      ;
+          ;
   }
 
 }
