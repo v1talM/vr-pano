@@ -53,6 +53,9 @@ import Velocity from 'velocity'
 import InfiniteLoading from 'vue-infinite-loading'
 import {mapState, mapActions} from 'vuex'
 export default {
+  components: {
+    InfiniteLoading,
+  },
   data () {
     return {
       root: url_root,
@@ -90,6 +93,7 @@ export default {
       }, delay)
     },
     infiniteHandler($state) {
+      console.log('called')
       const page = vm.page
       const size = vm.size
       const type = vm.type
