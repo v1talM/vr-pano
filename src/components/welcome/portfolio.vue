@@ -128,31 +128,6 @@ export default {
       }, 300)
     }
   },
-  methods:{
-    infiniteHandler($state) {
-        const page = vm.page
-                      const size = vm.size
-                      const type = vm.type
-                      if( !vm.is_max && page > 1){
-                        setTimeout(function () {
-                          portfolio.getVRList(page, size, type).then(res => {
-                            const vr_list = res.data.data
-                            if( vr_list.length < 1) {
-                              vm.setMaxPage()
-                            }
-                            const list = []
-                            for (var i = 0; i < vr_list.length; i++) {
-                              list.push(vr_list[i])
-                            }
-                            vm.pushVRList(list).then( res => {
-                              if(!vm.is_max)
-                                vm.setPage(page + 1)
-                            })
-                          })
-                        }, 300)
-                      }
-    }
-  },
   mounted () {
       const vm = this
       $('.ui.portfolio .container.grid')
