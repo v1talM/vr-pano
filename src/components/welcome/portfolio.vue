@@ -41,6 +41,7 @@
           </div>
         </div>
       </div>
+      <infinite-loading @infinite="infiniteHandler"></infinite-loading>
     </transition-group>
   </div>
 </template>
@@ -48,7 +49,8 @@
 <script>
 import portfolio from '@/api/portfolio'
 import {url_root} from '@/env'
-//import Velocity from 'velocity'
+import Velocity from 'velocity'
+import InfiniteLoading from 'vue-infinite-loading'
 import {mapState, mapActions} from 'vuex'
 export default {
   data () {
@@ -69,24 +71,23 @@ export default {
     },
     enter: function (el, done) {
       var delay = el.dataset.index * 150
-      el.style.opacity = 1
-      //setTimeout(function () {
-      //  Velocity(
-      //    el,
-      //    { opacity: 1 },
-      //    { complete: done }
-      //  )
-      //}, delay)
+      setTimeout(function () {
+        Velocity(
+          el,
+          { opacity: 1 },
+          { complete: done }
+        )
+      }, delay)
     },
     leave: function (el, done) {
       var delay = el.dataset.index * 150
-      //setTimeout(function () {
-      //  Velocity(
-      //    el,
-      //    { opacity: 0, height: 0 },
-      //    { complete: done }
-      //  )
-      //}, delay)
+      setTimeout(function () {
+        Velocity(
+          el,
+          { opacity: 0, height: 0 },
+          { complete: done }
+        )
+      }, delay)
     }
   },
   computed: {
@@ -127,6 +128,31 @@ export default {
       }, 300)
     }
   },
+  methods:{
+    infiniteHandler($state) {
+        const page = vm.page
+                      const size = vm.size
+                      const type = vm.type
+                      if( !vm.is_max && page > 1){
+                        setTimeout(function () {
+                          portfolio.getVRList(page, size, type).then(res => {
+                            const vr_list = res.data.data
+                            if( vr_list.length < 1) {
+                              vm.setMaxPage()
+                            }
+                            const list = []
+                            for (var i = 0; i < vr_list.length; i++) {
+                              list.push(vr_list[i])
+                            }
+                            vm.pushVRList(list).then( res => {
+                              if(!vm.is_max)
+                                vm.setPage(page + 1)
+                            })
+                          })
+                        }, 300)
+                      }
+    }
+  },
   mounted () {
       const vm = this
       $('.ui.segment.portfolio .container')
@@ -134,27 +160,7 @@ export default {
             once: false,
             observeChanges: true,
             onBottomVisible: function() {
-              const page = vm.page
-              const size = vm.size
-              const type = vm.type
-              if( !vm.is_max && page > 1){
-                setTimeout(function () {
-                  portfolio.getVRList(page, size, type).then(res => {
-                    const vr_list = res.data.data
-                    if( vr_list.length < 1) {
-                      vm.setMaxPage()
-                    }
-                    const list = []
-                    for (var i = 0; i < vr_list.length; i++) {
-                      list.push(vr_list[i])
-                    }
-                    vm.pushVRList(list).then( res => {
-                      if(!vm.is_max)
-                        vm.setPage(page + 1)
-                    })
-                  })
-                }, 300)
-              }
+
             }
           })
       ;
