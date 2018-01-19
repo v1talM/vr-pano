@@ -48,7 +48,7 @@
 <script>
 import portfolio from '@/api/portfolio'
 import {url_root} from '@/env'
-//import Velocity from 'velocity'
+import Velocity from 'velocity'
 import {mapState, mapActions} from 'vuex'
 export default {
   data () {
@@ -69,24 +69,23 @@ export default {
     },
     enter: function (el, done) {
       var delay = el.dataset.index * 150
-      el.style.opacity = 1
-      //setTimeout(function () {
-      //  Velocity(
-      //    el,
-      //    { opacity: 1 },
-      //    { complete: done }
-      //  )
-      //}, delay)
+      setTimeout(function () {
+        Velocity(
+          el,
+          { opacity: 1 },
+          { complete: done }
+        )
+      }, delay)
     },
     leave: function (el, done) {
       var delay = el.dataset.index * 150
-      //setTimeout(function () {
-      //  Velocity(
-      //    el,
-      //    { opacity: 0, height: 0 },
-      //    { complete: done }
-      //  )
-      //}, delay)
+      setTimeout(function () {
+        Velocity(
+          el,
+          { opacity: 0, height: 0 },
+          { complete: done }
+        )
+      }, delay)
     }
   },
   computed: {
@@ -129,11 +128,17 @@ export default {
   },
   mounted () {
       const vm = this
-      $('.ui.segment.portfolio .container')
+      $('.ui.portfolio .container.grid')
           .visibility({
             once: false,
             observeChanges: true,
-            onBottomVisible: function() {
+	    initialCheck: false,
+	    target: '.ui.vr-loader .load-bar',
+	    onPassed: {
+		'80%': function(){console.log('hello')}
+	    },
+            onBottomVisible: function(caculation) {
+	      console.log(caculation)
               const page = vm.page
               const size = vm.size
               const type = vm.type
@@ -179,6 +184,7 @@ export default {
   .ui.segment.portfolio .card.vr-portfolio
     width: 20rem
     margin: 0 auto
+    height: auto
   .ui.author.grid
     padding: 0 .625rem 0 1rem
   .ui.author.grid .column
