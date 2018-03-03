@@ -129,14 +129,11 @@ export default {
   },
   mounted () {
       const vm = this
-      $('.ui.portfolio .container.grid')
+      $('.ui.portfolio.segment')
           .visibility({
             once: false,
-            observeChanges: false,
-            initialCheck: false,
-            target: '.ui.portfolio .container.grid',
+            observeChanges: true,
             onBottomVisible: function() {
-              console.log('called')
               const page = vm.page
               const size = vm.size
               const type = vm.type
